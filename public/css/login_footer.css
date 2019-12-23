@@ -1,0 +1,11 @@
+footer {
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+}
+
+.img + .login {
+  margin-top: 5em;
+}
