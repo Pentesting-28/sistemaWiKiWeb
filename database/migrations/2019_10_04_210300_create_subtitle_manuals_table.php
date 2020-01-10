@@ -17,8 +17,8 @@ class CreateSubtitleManualsTable extends Migration
 
             $table->bigIncrements('id');
             $table->bigInteger('manual_id')->unsigned();
-            $table->string('subtitle_name');
-            $table->text('subtitle_description');
+            $table->string('subtitle_name',255);
+            $table->text('subtitle_description', 600);
             $table->timestamps();
 
             //Relacion

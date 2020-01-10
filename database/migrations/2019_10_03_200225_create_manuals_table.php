@@ -16,8 +16,8 @@ class CreateManualsTable extends Migration
         Schema::create('manuals', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->string('name');
-            $table->text('description');
+            $table->string('name',255);
+            $table->text('description',600);
             
             $table->timestamps();
         });

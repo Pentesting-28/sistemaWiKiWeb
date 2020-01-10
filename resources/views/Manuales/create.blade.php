@@ -94,9 +94,17 @@
          var content = 
 
          `<div class="content">
-
            <div class="form-group">
+           
+             <div class="alert alert-warning" role="alert">
 
+                <ul>
+                  <li>El campo Subtitulo debe contener al menos 5 caracteres.</li>
+                  <li>El campo Contenido debe contener al menos 5 caracteres.</li>
+                </ul>
+
+             </div>
+           
              <label>Subtítulo</label>
 
              <input type="text"  class="form-control @error('Subtitulo') is-invalid @enderror" name="Subtitulo[]" required maxlength="255">
