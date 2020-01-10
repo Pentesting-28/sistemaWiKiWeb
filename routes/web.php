@@ -30,8 +30,6 @@ Route::post('users/store','UserController@store')->name('users.store')->middlewa
 Route::get('users/{id}','UserController@show')->name('users.show')->middleware('can:users.show');
 Route::get('users/{user}/edit','UserController@edit')->name('users.edit')->middleware('can:users.edit');
 Route::put('users/{user}','UserController@update')->name('users.update')->middleware('can:users.edit');
-Route::get('user/password','UserController@password')->name('users.password')->middleware('can:users.edit');
-Route::post('users/updatepassword','UserController@updatePassword')->name('users.updatepassword')->middleware('can:users.edit');
 Route::delete('users/{id}','UserController@destroy')->name('users.destroy')->middleware('can:users.destroy');
 
 //Roles

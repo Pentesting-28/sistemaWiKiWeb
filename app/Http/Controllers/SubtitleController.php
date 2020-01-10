@@ -176,8 +176,13 @@ class SubtitleController extends Controller
     {
 
         $subtitle_manual = Subtitle_manual::findOrFail($id);//->delete();
+
+        if (isset($subtitle_manual->imagen->ruta)){
+
+            unlink($subtitle_manual->imagen->ruta);
+
+        }
         
-        unlink($subtitle_manual->imagen->ruta);
         $subtitle_manual->delete();
 
         Alert::success('Eliminado', 'Subtítulo eliminado con éxito');

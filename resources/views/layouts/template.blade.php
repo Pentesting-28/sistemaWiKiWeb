@@ -29,21 +29,11 @@
 
 
 </head>
-<body style="background-color:#dae0e5;/*#f0f0f0*/">
-
-<!--div class="container">
-    <div class="row ">
-        <div class="col-md-12">
-            
-            </div>
-        </div>
-    </div>
-</div-->
+<body style="background-color:#dae0e5;">
 
     <div id="app" >
 
-       <!--center> <img src="/imagenes/cantv2.jpg" style="width:100%; height: 50px;"></center-->
-        <nav class="sticky-top navbar navbar-expand-md navbar-light {{--bg-black--}} shadow-sm" style="background-color:#0058A8;/*#f6303e*/">
+        <nav class="sticky-top navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#0058A8;">
             <div class="container">
                 <a class="navbar-brand text-white" href="{{ url('/home') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -97,9 +87,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-                                    <a class="dropdown-item" href="{{ route('users.password') }}">
-                                        {{ __('Cambiar contraseña') }}
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

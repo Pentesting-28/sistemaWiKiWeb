@@ -145,7 +145,7 @@ class ManualController extends Controller
                     $subtitle_manual->subtitle_description = $request->Contenido[$i];
                     $subtitle_manual->save();
 
-                        $img=$request->imagen; 
+                        $img=$request->imagen;
 
                     if (isset($img[$i]) ? $img[$i] : '') {
 
@@ -256,10 +256,15 @@ class ManualController extends Controller
         $manual_destroy = Manual::where('id',$manual)->with('subtitle','subtitle.imagen')->get();
 
         foreach ($manual_destroy[0]->subtitle as $value) {
+
             $subtitle_manual = Subtitle_manual::findOrFail($value->id);//->delete();
+
+            if (isset($subtitle_manual->imagen->ruta)) {
+
+                unlink($subtitle_manual->imagen->ruta);
+                $subtitle_manual->delete();
+            }
             
-            unlink($subtitle_manual->imagen->ruta);
-            $subtitle_manual->delete();
         }
 
         $manual_destroy = Manual::findOrFail($manual)->delete();      

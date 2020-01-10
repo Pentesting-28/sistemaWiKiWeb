@@ -30,7 +30,7 @@ class RoleController extends Controller
         $name = $request->name;
         $date = $request->date;
 
-        $roles = Role::where('nombre_del_rol','LIKE',"%$name%" )
+        $roles = Role::where('nombre','LIKE',"%$name%" )
                      ->where('created_at','LIKE',"%$date%" )
                      ->paginate(10);
 

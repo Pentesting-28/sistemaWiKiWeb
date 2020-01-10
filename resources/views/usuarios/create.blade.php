@@ -10,26 +10,6 @@
                 <a href="{{route('users.index')}}" class="text-white"style="text-decoration:none" ><h5>Registro de usuarios</h5></a>
 
             </div>
-{{--                     @if (count($errors) > 0)
-                          <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
-                            
-                                <button type="button" name="alerta" class="close" data-dismiss="alert" aria-label="Close">
-                                   <span aria-hidden="true">
-                                   &times;
-                                   </span>
-                                </button>
-
-                            <p>Corrige los siguientes errores:</p>
-                              <ul>
-
-                                  @foreach ($errors->all() as $message)
-                                      <li><strong>{{ $message }}</strong></li>
-
-                                  @endforeach
-                              </ul>
-
-                          </div>
-                      @endif --}}
 
                 <div class="card-body"><br>
                     
@@ -99,11 +79,5 @@
         </div>
     </div>
 </div>
-
-<script>
-$(document).ready(function(){
-    $("#alerta").fadeOut(5000);
-});
-</script>
 
 @endsection

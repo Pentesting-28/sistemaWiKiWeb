@@ -211,16 +211,6 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function password(){
-
-        return view('usuarios.password');
-    }
-
-    public function updatePassword(Request $request){
-
-        return dd($request->all());
-        
-    }
 
     /**
      * Remove the specified resource from storage.

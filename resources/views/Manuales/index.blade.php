@@ -6,16 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                {{-- Mensaje de alerta --}}
-                    @if (session()->has('mensaje'))
 
-                        <div class="alert alert-success">
-                            
-                            {{ session('mensaje') }}
-
-                        </div>
-
-                    @endif
                 <div class="card-header text text-white" style="background-color:#0058A8;">
 
                 <a href="{{route('manuales.index')}}" class="text-white"style="text-decoration:none" ><h5>Lista de Manuales</h5></a>
@@ -106,6 +97,7 @@
 
                         </tbody>
                     </table>
+                    
                     {{$manuales->render()}} {{--Paginar los datos recuperado de la tabla roles--}}
                  
                 </div>

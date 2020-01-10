@@ -9,45 +9,6 @@
                     <a href="{{route('users.index')}}" class="text-white"style="text-decoration:none" ><h5>Edición de Usuario</h5></a>
                 </div>
 
-
-                {{-- Mensaje de alerta --}}
-                @if (session()->has('mensaje'))
-
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
-
-                         <strong>{{ session('mensaje') }}</strong>
-
-                         <button type="button" name="alerta" class="close" data-dismiss="alert" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                         </button>
-
-                    </div>
-
-                @endif
-
-                {{-- Mensaje de alerta --}}
-{{--                 @if (count($errors) > 0)
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
-                            
-                         <button type="button" name="alerta" class="close" data-dismiss="alert" aria-label="Close">
-                             <span aria-hidden="true">
-                                   &times;
-                             </span>
-                         </button>
-
-                         <p>Corrige los siguientes errores:</p>
-                            <ul>
-
-                                @foreach ($errors->all() as $message)
-
-                                    <li><strong>{{ $message }}</strong></li>
-
-                                @endforeach
-
-                            </ul>
-                    </div>
-                @endif --}}
-
                 <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
 
                      <form action="{{route('users.update', $editar->id)}}" method="POST">
@@ -81,6 +42,12 @@
 
                             <hr>
 
+                              <div class="alert alert-primary" role="alert">
+
+                              <center><b>Seleccione solo un rol.</b></center>
+                              
+                            </div>
+
                             <h3>Lista de roles</h3>
                             <div class="form-group">
                                 <ul class="list-unstyled">
@@ -104,11 +71,5 @@
         </div>
     </div>
 </div>
-
-<script>
-$(document).ready(function(){
-    $("#alerta").fadeOut(5000);
-});
-</script>
 
 @endsection

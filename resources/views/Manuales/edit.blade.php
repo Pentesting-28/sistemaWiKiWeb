@@ -45,26 +45,21 @@
             </div>
          </div>
 
-{{--                       @if (count($errors) > 0)
-                          <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
-                            
-                                <button type="button" name="alerta" class="close" data-dismiss="alert" aria-label="Close">
-                                   <span aria-hidden="true">
-                                   &times;
-                                   </span>
-                                </button>
+         <div class="container alerta-Subtitulo" style="display: none" id="alerta-Subtitulo">
+            <div class="row justify-content-center mt-4">
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>El campo subtítulo debe poseer maximo 255 carácteres!</strong>
+              </div>
+            </div>
+         </div>
 
-                            <p>Corrige los siguientes errores:</p>
-                              <ul>
-
-                                  @foreach ($errors->all() as $message)
-                                      <li><strong>{{ $message }}</strong></li>
-
-                                  @endforeach
-                              </ul>
-
-                          </div>
-                      @endif --}}
+         <div class="container alerta-Contenido" style="display: none" id="alerta-Contenido">
+            <div class="row justify-content-center mt-4">
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>El campo contenido debe poseer maximo 600 carácteres!</strong>
+              </div>
+            </div>
+         </div>
 
               <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
 
@@ -277,97 +272,84 @@
                 @endforeach
 
 
-                <!-- CREAR Y GUARDAR NUEVOS SUBTITULOS CON ILUSTRACIÓN -->
-                <form name="form" method="POST" action="{{route('subtitle.store')}}"  enctype = "multipart/form-data" >
+                      <!-- CREAR Y GUARDAR NUEVOS SUBTITULOS CON ILUSTRACIÓN -->
+                      <form name="form" method="POST" action="{{route('subtitle.store')}}"  enctype = "multipart/form-data" >
 
-                 @csrf
+                       @csrf
 
-                 <input type="hidden" name="id_manuals" value="{{$edit_manuals[0]->id}}">
+                       <input type="hidden" name="id_manuals" value="{{$edit_manuals[0]->id}}">
 
-                <input  type="button" id="show" onclick="mostrarBoton()" value="Agregar subtítulo" class="btn btn-sm btn-success pull-right float-right">
+                      <input  type="button" id="show" onclick="mostrarBoton()" value="Agregar subtítulo" class="btn btn-sm btn-success pull-right float-right">
 
-                <div id="element" style="display: none;"><br>
+                      <div id="element" style="display: none;"><br>
 
-                   <div class="content">
+                         <div class="content">
 
-                           <div class="form-group">
+                                 <div class="form-group">
 
-                             <label>Subtítulo</label>
+                                   <label>Subtítulo</label>
 
-                             <input type="text"  name="Subtitulo" class="form-control @error('Subtitulo') is-invalid @enderror" required maxlength="255">
+                                   <input type="text"  name="Subtitulo" class="form-control @error('Subtitulo') is-invalid @enderror Subtitulo" required maxlength="255">
 
-                             @error('Subtitulo')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                             @enderror
-
-
-                           </div>
-
-                           <div class="form-group">
-
-                             <label>Contenido</label>
-
-                             <textarea name="Contenido" id="campo" class="form-control @error('Contenido') is-invalid @enderror" rows="10" style="resize:none;" required maxlength="600"></textarea><br>
-
-                              @error('Contenido')
-                                  <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                  </span>
-                              @enderror
-
-                             <span class="btn btn-sm  float-right text text-white" style="background-color:#0058A8;" onclick="$(this).parent().find('input[type=file]').click();">
-
-                                  Añadir imagen/.jpeg
-
-                             </span>
-
-                                <input type="file" id="file" name="imagen" accept="image/jpeg"  style="display: none;"><br>
-
-                            </div><br>
-
-                            <div id="close">
-                               <center> <input type="button" id="hide" onclick="mostrarBotons()" value="Cerrar" class="btn btn-sm btn-danger  mx-1">
-                                <input type="submit" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar subtítulo"> </center>
-                            </div><br>
-                      </div>
-                  </div>
-                </form> 
-
-<script type="text/javascript">
-
-$(document).ready(function(){
-  $("#hide").click(function(){
-    $("#element").hide();
-  });
-  $("#show").click(function(){
-    $("#element").show();
-  });
-});
-
-</script>
+                                   @error('Subtitulo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                   @enderror
 
 
-<script>
+                                 </div>
 
-var btn_1 = document.getElementById('show');
-        
-function mostrarBoton(){
+                                 <div class="form-group">
 
-  btn_1.style.display = 'none';
+                                   <label>Contenido</label>
 
-}
+                                   <textarea name="Contenido" id="campo" class="form-control @error('Contenido') is-invalid @enderror Contenido" rows="10" style="resize:none;" required maxlength="600"></textarea><br>
 
-function mostrarBotons(){
+                                    @error('Contenido')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
 
-  btn_1.style.display = 'inline';
+                                        <!-- Botón disparador modal -->
+                                        <button type="button" class="btn btn-sm  float-right text text-white" style="background-color:#0058A8;" data-toggle="modal" data-target="#exampleModalCenter">
+                                          Añadir imagen/.jpeg
+                                        </button><br>
 
-}
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                          <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Añadir imagen</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                </button>
+                                              </div>
+                                              <div class="modal-body">
 
-</script>
+                                                 <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Añadir_imagen_create(this.name,'btn_Añadir_imagen_create');">Cargar imagen</span>
 
+                                                <input name="imagen" id="imagen" type="file" accept="image/jpeg" style="display: none;">
 
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                                  <input type="button" name="btn_Añadir_imagen_create" data-dismiss="modal" id="btn_Añadir_imagen_create" class="btn text text-white" style="background-color:#0058A8;" disabled value="Guardar cambios">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                  </div><br>
+
+                                  <div id="close">
+                                     <center> <input type="button" id="hide" onclick="mostrarBotons()" value="Cerrar" class="btn btn-sm btn-danger  mx-1">
+                                      <input type="submit" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar subtítulo"> </center>
+                                  </div><br>
+                            </div>
+                         </div>
+                      </form> 
                     </div>
                 </div>
             </div>
@@ -375,257 +357,6 @@ function mostrarBotons(){
     </div>
 </div>
 
-<script type="text/javascript">
-
-/*
-
-FUNCION PARA GENERAR n CANTIDAD DE CAMPOS TIPO "TEXT" PARA INSERTAR CARACTERES, "FILE" PARA LA CARGA O SUBIR IMAGENES AL SERVIDOR Y "SUBMIT" PARA CONFIRMAR EL ENVIO DE LOS DATOS MEDIANTE EL FORMULARIO.
-
-ESTA FUNCIÓN LA LLAMAMOS DESDE LA SIGUIENTE MANERA:
-
-<input onclick="NOMBRE_DE_LA_FUNCION();" type="button" id="btn-1" value="Agregar subtítulo" class="btn btn-sm btn-success float-right">
-
- */
-
-     
-
-  {{--function AgregarCampos() {
-        var nextinput = 1;
-        //nextinput++;
-
-         var content = 
-
-         `<div class="content">
-
-           <div class="form-group">
-
-             <label>Subtítulo</label>
-
-             <input type="text"  class="form-control @error('Subtitulo') is-invalid @enderror" name="Subtitulo[]" required>
-
-             @error('Subtitulo')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-             @enderror
-
-
-           </div>
-
-           <div class="form-group">
-
-             <label>Contenido</label>
-
-             <textarea name="Contenido[]" id="campo" class="form-control @error('Contenido') is-invalid @enderror" rows="10" style="resize:none;" required></textarea><br>
-
-              @error('Contenido')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-
-             <input type="submit" class="btn btn-sm float-right text text-white " style="background-color:#0058A8;" value ="Guardar subtítulo">
-
-             <button type="button" class="btn btn-sm btn-danger pull-right float-right mx-1" >Eliminar Subtitulo</button>
-
-             <span class="btn btn-sm  float-right text text-white" style="background-color:#0058A8;" onclick="$(this).parent().find('input[type=file]').click();">
-
-                  Añadir imagen/.jpeg
-
-             </span>
-
-                <input type="file" id="file" name="imagen2[]" accept="image/jpeg"  style="display: none;"><br>
-
-            </div>
-
-           </div>`
-
-         $("#campos").append(content);
-         $("button").click(function() {
-           $(this).closest('div.content').remove();
-         });
-
-       } --}}
-/*
-
-USAMOS ESTE ESCRIPT PARA PASAR EL ID DE LA RELACION EXISTENTE ENTRE IMAGEN Y SUBTITULO, SE ENVIA AL MODAL MEDIANTE data-id="{{--$edit_manual->id--}}", UNA IMAGEN SOLO PUEDE PENECER A UN SUBTITULO Y UN SUBTITULO SOLO PUEDE TENER UNA IMAGEN ES MA RELACION UNO A UNO
-
-PASAMOS EL ID DE LA SIGUIENTE MANERA:
-
-<!-- Botón disparador moda -->
-<a data-toggle="modal" data-id="{{--$edit_manual->imagen->id--}}" data-toggle="modal" title="Add this item" class="open-Actualizar_imagen btn btn-sm float-right text text-white" style="background-color:#0058A8;" href="#Actualizar_imagen">Actualizar imagen</a>
-
-CON AYUDA DE ESTE ESCRIPT CONSEGUIMOS PASAR EL ID DE LA IMAGEN QUE GUARDA RELACION CON EL SUBTITULO PARA SU POSTERIOR ACTUALIZACIÓN.
-
-
- */  
-    
-    $(document).on("click", ".open-Actualizar_imagen", function () {
-
-    var myBookId = $(this).data('id');
-    $(".modal-body #bookId").val( myBookId );
-    $('#Actualizar_imagen').modal('show');
-
-    });
-
-//*******************************************************************
-
-
-/*
-
-USAMOS ESTE ESCRIPT PARA PASAR EL ID DE LA RELACION SUBTITULO, SE ENVIA AL MODAL MEDIANTE data-id="{{--$edit_manual->id--}}", UNA IMAGEN SOLO PUEDE PENECER A UN SUBTITULO Y UN SUBTITULO SOLO PUEDE TENER UNA IMAGEN ES MA RELACION UNO A UNO
-
-PASAMOS EL ID DE LA SIGUIENTE MANERA:
-
-<!-- Botón disparador modal -->
-<a data-toggle="modal" data-id="{{--$edit_manual->id--}}" data-toggle="modal" title="Add this item" class="open-Añadir_imagen btn btn-sm float-right text text-white" style="background-color:#0058A8;" href="#Anadir_imagen">Añadir imagen</a>
-
-CON AYUDA DE ESTE ESCRIPT CONSEGUIMOS AÑADIR LA ILUSTRACIÓN (IMAGEN) PARA CADA SUBTITULO.
-
- */
-
-    $(document).on("click", ".open-Añadir_imagen", function () {
-
-    var myidsubtitle = $(this).data('id');
-    $(".modal-body #idsubtitle").val( myidsubtitle );
-    $('#Anadir_imagen').modal('show');
-
-    });
-
-//**************************************************************
-
-/*
-
-CON ESTE ESCRIPT PODEMOS DESACTIVAR O ACTIVAR EL BOTON QUE ES ENCUENTRA EN EL MODAL SI CARGAMOS LA IMAGEN EL BOTON DE GUADADO SE ACTIVA CASO CONTRARIO PERMANECERA DESACIVADO HASTA QUE SE ENCUENTRE EL CAMPO FILE LLENO*/
-
-function desactivar_btn_Actualizar_imagen(name,nombreBotones){
-
-    var partesBotones = nombreBotones.split(",");
-
-    var boton = document.getElementById(partesBotones);
-
-    if(boton.name == name)boton.disabled = false;
-
-    else boton.disabled = false;
-
-}
-
-//************************************************************
-
-/*
-
-CON ESTE ESCRIPT PODEMOS DESACTIVAR O ACTIVAR EL BOTON QUE ES ENCUENTRA EN EL MODAL SI CARGAMOS LA IMAGEN EL BOTON DE GUADADO SE ACTIVA CASO CONTRARIO PERMANECERA DESACIVADO HASTA QUE SE ENCUENTRE EL CAMPO FILE LLENO*/
-
-function desactivar_btn_Añadir_imagen(name,nombreBotones){
-
-    var partesBotones = nombreBotones.split(",");
-
-    var boton = document.getElementById(partesBotones);
-
-    if(boton.name == name)boton.disabled = false;
-
-    else boton.disabled = false;
-
-}
-
-//**********************************************************
-
-$(document).ready(function() {
-  $('input[name="titulo"]').keyup(function(){
-    console.log('titulo')
-    let texto = $('input[name="titulo"]').val()
-    if (texto.length === 255) {
-      // alert('El campo titulo debe poseer maximo 255 carácteres')
-      $('.alerta-titulo').css('display','inline');
-      $('#alerta-titulo').fadeOut(6000);
-    }
-  })
-})
-
-$(document).ready(function() {
-  $('.descripcion').keyup(function(){
-    let descripcion = $('.descripcion').val()
-    console.log(descripcion.length)
-    if (descripcion.length === 600) {
-      // alert('El campo descripción debe poseer maximo 600 carácteres')
-      $('.alerta-descripcion').css('display','inline');
-      $('#alerta-descripcion').fadeOut(6000);
-    }
-  })
-})
-//**********************************************************
-$(document).ready(function() {
-  $('input[name="subtitulo"]').keyup(function(){
-    console.log('subtitulo')
-    let texto = $('input[name="subtitulo"]').val()
-    if (texto.length === 255) {
-      // alert('El campo titulo debe poseer maximo 255 carácteres')
-      $('.alerta-subtitulo').css('display','inline');
-      $('#alerta-subtitulo').fadeOut(6000);
-    }
-  })
-})
-
-$(document).ready(function() {
-  $('.contenido').keyup(function(){
-    let contenido = $('.contenido').val()
-    console.log(contenido.length)
-    if (contenido.length === 600) {
-      // alert('El campo descripción debe poseer maximo 600 carácteres')
-      $('.alerta-contenido').css('display','inline');
-      $('#alerta-contenido').fadeOut(6000);
-    }
-  })
-})
-//**********************************************************
-</script>
-
-{{--@include('Manuales.form_create_and_update.form_update')--}}
-
-<!--input name="boton1" id="boton1" type="button" value="Boton 1" onclick="desactivar(this.name,'boton1,boton2,boton3')" />
-<input name="boton2" id="boton2" type="button" value="Boton 2" onclick="desactivar(this.name,'boton1,boton2,boton3')"/>
-<input name="boton3" id="boton3" type="button" value="Boton 3" onclick="desactivar(this.name,'boton1,boton2,boton3')" />
- 
-<script type="text/javascript">
-//Esta funcion servira, pone en nombreBotones los nombres de los botones separados por coma como se ve en el ejemplo de arriba
-function desactivar(name,nombreBotones){
-    var partesBotones = nombreBotones.split(",");
-    for(i=0;i<partesBotones.length;i++){
-        var boton = document.getElementById(partesBotones[i]);
-        if(boton.name == name)boton.disabled = false;
-        else boton.disabled = true;
-
-      <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();">Cargar imagen</span>
-
-       <input type="file" id="file" name="imagen" accept="image/jpeg" style="display: none;">
-
-    <p>Link 1</p>
-<a data-toggle="modal" data-id="{{--$edit_manual->imagen->id--}}" data-toggle="modal" title="Add this item" class="open-AddBookDialog btn btn-primary" href="#addBookDialog">test</a>
-
-<div class="modal hide" id="addBookDialog">
- <div class="modal-header">
-    <button class="close" data-dismiss="modal">×</button>
-    <h3>Modal header</h3>
-  </div>
-    <div class="modal-body">
-        <input type="hidden" name="bookId" id="bookId" value=""/>
-
-         <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar(this.name,'boton2');">Cargar imagen</span>
-
-       <input name="imagen" id="imagen" type="file" accept="image/jpeg" style="display: none;">
-
-    </div>
-    <input name="boton2" id="boton2" type="submit" class="btn btn-sm btn-dark" value="Actualizar imagen" disabled style="position:absolute;right:308px;margin-top: -0px">
-    </div-->
-
-{{-- <script>
-$(document).ready(function(){
-    $(".alerta-titulo").fadeOut(5000);
-    //$("#alerta-titulo").fadeOut(5000);
-    //$("#alerta-descripcion").fadeOut(5000);
-});
-</script> --}}
-
-      
+<script src="{{ asset('/js/edit_manual.js') }}"></script>
 
 @endsection

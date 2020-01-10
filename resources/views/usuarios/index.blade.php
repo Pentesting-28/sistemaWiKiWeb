@@ -13,20 +13,6 @@
 
                 </div>
 
-                    @if (session()->has('mensaje'))
-
-                        {{-- Mensaje de alerta --}}    
-                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta">
-                          <strong>{{ session('mensaje') }}</strong>
-                          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-
-
-
-                    @endif
-
                 <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
 
                   <form action="{{route('users.busqueda')}}" method="GET">

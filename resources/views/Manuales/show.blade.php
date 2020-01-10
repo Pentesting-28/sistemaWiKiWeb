@@ -4,57 +4,44 @@
 
 <div class="container" >
         <div class="col-md-12 fluid-center" >
-            <div class="card" style="box-shadow: #999 -2px -2px 10px 10px ; border-color: black; border-width:2px">
+            <div class="card" style="box-shadow: #999 -2px -2px 10px 10px ; border-color: black; border-width:2px">	
+                <div class="container" style="background: #dce8f0">
+                    <div class="section-header">
+                        <div class="container">
+                        
+                          <br><br><center><h1><small>{{$manuals[0]->name}}</small></h1></center><br><br><br>
 
-            	
-          <div class="container" style="background: #dce8f0">
-              <div class="section-header">
-                  <div class="container">
-                  <br><br>
+                          <dl>
+                          <dd class="lead"> <p class="text-justify"> {{$manuals[0]->description}} </p> </dd>   
+                          </dl><br><br><br>
+                          <!-- <big></big> Representa el texto con una fuente "grande.-->
 
-                    <center><h1><small>{{$manuals[0]->name}}</small></h1></center>
+                            @foreach($manuals[0]->subtitle as $manual)
+                                {{--$manual->imagen['ruta']--}}
 
-                  <br><br><br>
-                      
-                    <dl>
-                    <dd class="lead"> <p class="text-justify"> {{$manuals[0]->description}} </p> </dd>   
-                    </dl>
-                    <!-- <big></big> Representa el texto con una fuente "grande.-->
-                  <br><br><br>
+                                <dl>
+                                <dt><h4> {{$manual->subtitle_name}} </h4></dt><br>
+                                <dd class="lead"> <p class="text-justify"> {!!nl2br($manual->subtitle_description)!!} </p> </dd>   
+                                </dl>
 
-                  @foreach($manuals[0]->subtitle as $manual)
-                      {{--$manual->imagen['ruta']--}}
+                                  @if($manual->imagen['ruta'] !== null)
 
-                      <dl>
-                      <dt><h4> {{$manual->subtitle_name}} </h4></dt><br>
-                      <dd class="lead"> <p class="text-justify"> {!!nl2br($manual->subtitle_description)!!} </p> </dd>   
-                      </dl>
+                                     <br><div class="text-center">
+                                       <img src="{{asset($manual->imagen['ruta'])}}" width="300" height="150" alt="slider-image" class="img-responsive" class="rounded" alt="...">
+                                     </div><br>
 
-                      
-            
-                      
+                                  @endif
 
-                        @if($manual->imagen['ruta'] !== null)
+                                  <br><hr><br>
 
-                           <!--br><center><img src="{{--str_replace('public','reporte',asset($manual->imagen['ruta']))--}}" width="50%"  alt="slider-image" class="img-responsive"></center><br><br><br><br-->
+                            @endforeach
 
-                           <br><div class="text-center">
-                             <img src="{{asset($manual->imagen['ruta'])}}" width="300" height="150" alt="slider-image" class="img-responsive" class="rounded" alt="...">
-                           </div><br>
-
-                        @endif
-                        <br><hr><br>
-                  @endforeach
-                   </div>
-                   <br><br>
-
+                         </div><br><br>
+                         
+                        </div>
                   </div>
-                </div>
-            
-            </div>
+              </div>
         </div>
 </div>
-
-      
 
 @endsection

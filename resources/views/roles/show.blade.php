@@ -13,40 +13,26 @@
 
                  <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
 
-                   <table class="table">
-                       <thead>
-                           <tr>
-                               <th>Nombre     </th>
-                               <th>Slug       </th>
-                               <th>Descripción</th>
-                               <th>Special    </th>
-                           </tr>
-                       </thead>
-                       <tbody>
-                           <tr>
-                               <td><p>{{$detalle->nombre}}       </p></td>
-                               <td><p>{{$detalle->slug}}      </p></td>
-                               <td><p>{{$detalle->description}}</p></td>
 
+                               <p><b>Nombre:      </b>{{$detalle->nombre}}</p>
+                               <p><b>Slug:        </b>{{$detalle->slug}}</p>
+                               <p><b>Descripción: </b>{{$detalle->description}}</p>
+              
                                @if($detalle->special == 'all-access') 
 
-                                  <td><p><b>Acceso total</b></p></td>
+                                  <p><b> Special: </b> <b> Acceso total. </b></p>
 
                                @elseif($detalle->special == 'no-access')
 
-                                  <td><p>Sin acceso</p></td>
-
+                                  <p><b> Special: </b> <b> Sin acceso. </b></p>
                                @else
 
-                                  <td><b>No aplica.</b></td>
+                                  <p><b> Special: </b> <b> No aplica. </b></p>
 
                                @endif
-                           </tr>
-                           
-                       </tbody>
-                   </table>
 
                       {{--La función strpos, permite buscar la posición de la primera ocurrencia de un substring en un string, es decir, la posición de la primera ocurrencia de un string dentro de otro string.--}}
+                      <br>
                       @if (strpos($detalle->permissions, 'name') !== false)
 
                           <h3>Lista de permisos</h3>
@@ -67,18 +53,19 @@
 
                       @else
 
-                         <h3>Lista de permisos</h3>
+                             <h3>Lista de permisos</h3>
+                             
                              <div class="form-group">
                                 <ul class="list-unstyled">
                                    
-                                    <li>
-                                        <label>
-                                        <em><b>No aplica.</b></em>
-                                        </label>
-                                    </li>
+                                  <li>
+                                    <label>
+                                      <em><b>No aplica.</b></em>
+                                    </label>
+                                  </li>
 
-                                  </ul>
-                              </div>
+                                </ul>
+                            </div>
                                 
                       @endif
                 </div>
@@ -86,4 +73,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -12,17 +12,6 @@
 
                 </div>
 
-                    {{-- Mensaje de alerta --}}
-                    @if (session()->has('mensaje'))
-
-                        <div class="alert alert-success">
-                            
-                            {{ session('mensaje') }}
-
-                        </div>
-
-                    @endif
-
                 <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
 
                   <form action="{{route('roles.busqueda')}}" method="GET">
@@ -103,4 +92,5 @@
         </div>
     </div>
 </div>
+
 @endsection
