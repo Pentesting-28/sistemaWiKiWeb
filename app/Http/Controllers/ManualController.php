@@ -265,7 +265,7 @@ class ManualController extends Controller
                 $subtitle_manual->delete();
             }
             
-        }
+        }//comentario
 
         $manual_destroy = Manual::findOrFail($manual)->delete();      
 
