@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        User::create([
+       $users = User::create([
                 'name' => 'Admin',
                 'email' => 'Admin02@cantv.com.ve',
                 'email_verified_at' => now(),
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         /*$admin->givePermissionTo(Permission::all());*/
 
         //User Admin
-        $user = User::find(1); //Admin
+        $user = User::find($users->id); //Admin
         $user->roles()->attach($role_admin);
 
     }
