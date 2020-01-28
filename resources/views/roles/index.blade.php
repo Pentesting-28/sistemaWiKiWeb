@@ -51,7 +51,7 @@
 
                                 <td>{{ $role->id }}</td>
                            
-                                <td>{{ $role->nombre }}</td>
+                                <td>{{ $role->name }}</td>
 
                                 <td width="10px" >
                                     @can('roles.show')

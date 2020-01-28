@@ -9,7 +9,7 @@ class Subtitle_manual extends Model
     protected $table = 'subtitle_manuals';
      
     //Codigo para el control de la asignación masiva de datos
-    protected $fillable = ['name_sub1[]','contenido_sub1[]','manual_id'];
+    protected $fillable = ['subtitle_name','subtitle_description','manual_id'];
     //para que no se cambie directamente los campos.
 
     public function imagen(){

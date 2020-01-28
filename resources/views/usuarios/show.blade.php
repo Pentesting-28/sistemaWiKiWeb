@@ -30,7 +30,7 @@
 
                    {{--La función strpos, permite buscar la posición de la primera ocurrencia de un substring en un string, es decir, la posición de la primera ocurrencia de un string dentro de otro string.--}}
                    
-                      @if (strpos($detalle->roles, 'nombre') !== false)
+                      @if (strpos($detalle->roles, 'name') !== false)
  
                           <h3>Roles asignados</h3><br>
                              <div class="form-group">
@@ -39,7 +39,7 @@
                                     @foreach($detalle->roles as $roles)
                                   
                                         <label>
-                                        <em><b>{{ $roles->nombre }}.</b></em>
+                                        <em><b>{{ $roles->name }}.</b></em>
                                         </label>
                        
                                     @endforeach

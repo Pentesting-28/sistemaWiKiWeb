@@ -18,10 +18,10 @@
                         @method('PUT')
 
                             <div class="form-group">
-                                <label name="nombre">Nombre</label>
-                                <input type="text" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{old('nombre') ?? $role->nombre}}" maxlength="50" required>
+                                <label name="name">Nombre</label>
+                                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name') ?? $role->name}}" maxlength="50" required>
 
-                                @error('nombre')
+                                @error('name')
                                   <span class="invalid-feedback" role="alert">
                                       <strong>{{ $message }}</strong>
                                   </span>

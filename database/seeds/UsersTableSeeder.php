@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
 
         //Admin
         $role_admin          = Role::create([
-        	'nombre'         => 'Admin',
+        	'name'           => 'Admin',
         	'slug'  	     => 'admin',
         	'special' 	     => 'all-access',
             'description'    => 'Super Usuario'

@@ -8,7 +8,7 @@ class Imagen extends Model
 {
     protected $table    = 'imagens';
 
-    protected $fillable = ['imagen','subtitle_manual_id'];
+    protected $fillable = ['ruta','subtitle_manual_id'];
 
     public function subtitle_manual() {
 

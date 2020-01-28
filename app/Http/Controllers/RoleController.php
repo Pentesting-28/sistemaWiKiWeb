@@ -30,7 +30,7 @@ class RoleController extends Controller
         $name = $request->name;
         $date = $request->date;
 
-        $roles = Role::where('nombre','LIKE',"%$name%" )
+        $roles = Role::where('name','LIKE',"%$name%" )
                      ->where('created_at','LIKE',"%$date%" )
                      ->paginate(10);
 
@@ -79,19 +79,19 @@ class RoleController extends Controller
         
         $validator = Validator::make($request->all(),[
 
-            'nombre'         => 'required|min:5|max:255|unique:roles', 
+            'name'           => 'required|min:5|max:255|unique:roles', 
             'slug'           => 'required|min:5|max:255',
             'descripcion'    => 'required|min:5|max:255'
 
         ]);
 
         $role              = new Role;
-        $role->nombre      = $request->nombre;
+        $role->name        = $request->name;
         $role->slug        = $request->slug;
         $role->description = $request->descripcion;
         
         $errors      = $validator->errors();
-        $nombre      = $errors->first('nombre');
+        $nombre      = $errors->first('name');
         $slug        = $errors->first('slug');
         $descripcion = $errors->first('descripcion');
 
@@ -204,19 +204,19 @@ class RoleController extends Controller
 
          $validator = Validator::make($request->all(),[
 
-            'nombre'         => "required|min:5|max:255|unique:roles,nombre,$id",
+            'name'           => "required|min:5|max:255|unique:roles,name,$id",
             'slug'           => 'required|min:5|max:255',
             'descripcion'    => 'required|min:5|max:255'
 
         ]);
 
         $role              = Role::findOrFail($id);
-        $role->nombre      = $request->nombre;
+        $role->name        = $request->name;
         $role->slug        = $request->slug;
         $role->description = $request->descripcion;
         
         $errors      = $validator->errors();
-        $nombre      = $errors->first('nombre');
+        $nombre      = $errors->first('name');
         $slug        = $errors->first('slug');
         $descripcion = $errors->first('descripcion');
 
