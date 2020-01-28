@@ -52,7 +52,7 @@
             <center>
 
                 <div class="p-1 mb-2 bg-danger text-white">
-                        Cantv C.A - RIF:J-00124134-5. - Todos los derechos reservados - 2019©
+                        Cantv 2020 - RIF:J-00124134-5 | GGSI | GSOS | Coinse - Todos los derechos reservados - 2020©
                 </div>
 
             </center>

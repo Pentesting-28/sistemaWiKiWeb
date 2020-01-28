@@ -18,15 +18,15 @@ class UsersTableSeeder extends Seeder
     {
 
         User::create([
-                'name' => 'Mario',
-                'email' => 'mpenav02@cantv.com.ve',
+                'name' => 'Admin',
+                'email' => 'Admin02@cantv.com.ve',
                 'email_verified_at' => now(),
                 'password' => bcrypt('123456789'),
                 'remember_token' => Str::random(10),
 
         ]);
 
-         factory(User::class, 20)->create();
+        //factory(User::class, 20)->create();
 
         //Admin
         $role_admin          = Role::create([
@@ -39,7 +39,7 @@ class UsersTableSeeder extends Seeder
         /*$admin->givePermissionTo(Permission::all());*/
 
         //User Admin
-        $user = User::find(1); //Mario
+        $user = User::find(1); //Admin
         $user->roles()->attach($role_admin);
 
     }

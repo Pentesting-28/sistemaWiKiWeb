@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="box-shadow: #999 15px 15px 10px;">
+            <div class="card" style="box-shadow: #999 1px 1px 20px 2px;">
                 <div class="card-header " style="background-color:white;"><img src="{{asset('/images/logocantv.png')}}" width="190" height="70"></div>
                
                 <div class="card-body">

@@ -13,7 +13,6 @@
 
                  <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
 
-
                                <p><b>Nombre:      </b>{{$detalle->nombre}}</p>
                                <p><b>Slug:        </b>{{$detalle->slug}}</p>
                                <p><b>Descripción: </b>{{$detalle->description}}</p>

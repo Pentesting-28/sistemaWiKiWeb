@@ -35,7 +35,7 @@
                     </div>
 
                   </form><br>
-
+<div class="table-responsive">
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
@@ -90,6 +90,7 @@
 
                         </tbody>
                     </table>
+                </div>
                     {{$usuarios->render()}} {{--Paginar los datos recuperado de la tabla users--}}
                 </div>
             </div>

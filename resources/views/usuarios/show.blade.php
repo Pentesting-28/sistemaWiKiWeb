@@ -16,7 +16,7 @@
                       <thead>
                            <tr>
                                <th>Nombre</th>
-                               <th>Descripción</th>
+                               <th>Correo electrónico</th>
                            </tr>
                        </thead>
                        <tbody>

@@ -279,7 +279,7 @@
 
                        <input type="hidden" name="id_manuals" value="{{$edit_manuals[0]->id}}">
 
-                      <input  type="button" id="show" onclick="mostrarBoton()" value="Agregar subtítulo" class="btn btn-sm btn-success pull-right float-right">
+                      <input  type="button" id="show" onclick="mostrarBoton()" value="Nuevo subtítulo" class="btn btn-sm btn-success pull-right float-right">
 
                       <div id="element" style="display: none;"><br>
 
@@ -344,7 +344,7 @@
                                   </div><br>
 
                                   <div id="close">
-                                     <center> <input type="button" id="hide" onclick="mostrarBotons()" value="Cerrar" class="btn btn-sm btn-danger  mx-1">
+                                     <center> <input type="button" id="hide" onclick="mostrarBotons()" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
                                       <input type="submit" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar subtítulo"> </center>
                                   </div><br>
                             </div>

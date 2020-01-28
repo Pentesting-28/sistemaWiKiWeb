@@ -27,7 +27,7 @@
                                   @if($manual->imagen['ruta'] !== null)
 
                                      <br><div class="text-center">
-                                       <img src="{{asset($manual->imagen['ruta'])}}" width="300" height="150" alt="slider-image" class="img-responsive" class="rounded" alt="...">
+                                       <img src="{{asset($manual->imagen['ruta'])}}" width="350" height="150" alt="slider-image" class="rounded" class="rounded" alt="...">
                                      </div><br>
 
                                   @endif

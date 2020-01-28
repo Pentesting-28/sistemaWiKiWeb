@@ -28,7 +28,7 @@
                            </div>
 
                            <div class="form-group">
-                                <label name="nombre">Email</label>
+                                <label name="nombre">Correo electrónico</label>
                                 <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email') ?? $editar->email}}">
 
                                 @error('email')
@@ -63,7 +63,7 @@
                                 </ul>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Guardar">
+                                <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Actualizar registro">
                             </div>
                      </form>
                 </div>

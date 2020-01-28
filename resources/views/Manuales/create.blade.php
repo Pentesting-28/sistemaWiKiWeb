@@ -52,9 +52,9 @@
                       </div>
 
                       <div class="btn-group btn-sm pull-right float-right" role="group" aria-label="Basic example">
-                          <span>Agregar subtitulos:</span>
+                         {{-- <span>Agregar subtitulos:</span> --}}
                           <input type="number" id="member">
-                          <input type="button" id="show" onclick="guardar_ocultar();Agregar_subtitulos();" value="Agregar" class="btn btn-sm btn-success mx-1">
+                          <input type="button" id="show" onclick="guardar_ocultar();Agregar_subtitulos();" value="Agregar subtitulos" class="btn btn-sm btn-success mx-1">
                       </div><br><br>
 
                        <div id="element" style="display: none;"><br>
@@ -62,7 +62,7 @@
                                <div id="container"/></div>
 
                                <div id="close">
-                                    <center> <input type="button" id="hide" onclick="mostrarBotons();guardar_mostrar();" value="Cerrar" class="btn btn-sm btn-danger  mx-1">
+                                    <center> <input type="button" id="hide" onclick="mostrarBotons();guardar_mostrar();" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
                                     <input type="submit" id="guardar2" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar manual"> </center>
                               </div><br>
                        </div>  
@@ -94,6 +94,7 @@
          var content = 
 
          `<div class="content">
+         
            <div class="form-group">
            
              <div class="alert alert-warning" role="alert">

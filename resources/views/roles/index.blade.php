@@ -33,7 +33,7 @@
                     </div>
 
                   </form><br>
-
+<div class="table-responsive">
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
@@ -86,7 +86,8 @@
 
                         </tbody>
                     </table>
-                    {{$roles->render()}} {{--Paginar los datos recuperado de la tabla roles--}} 
+                    {{$roles->render()}} {{--Paginar los datos recuperado de la tabla roles--}}
+                  </div>
                 </div>
             </div>
         </div>
