@@ -27,7 +27,7 @@
 
                           <button type="submit" class="btn btn-success">Buscar</button>
                           @can('roles.create')
-                          <a href="{{route('users.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Registrar</a>
+                          <a href="{{route('users.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
                           @endcan
 
                         </div>
