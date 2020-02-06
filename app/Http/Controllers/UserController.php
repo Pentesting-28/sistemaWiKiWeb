@@ -32,7 +32,7 @@ class UserController extends Controller
         $email= $request->email;
         $date = $request->date;
 
-        $usuarios = User::where('name','LIKE',"%$name%" )
+        $usuarios = User::orderBy('id', 'ASC')->where('name','LIKE',"%$name%" )
                         ->where('email','LIKE',"%$email%" )
                         ->where('created_at','LIKE',"%$date%" )
                         ->paginate(10);
@@ -65,8 +65,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('usuarios.create');
+    {   
+        $roles = Role::get();
+        return view('usuarios.create',compact('roles'));
     }
 
     /**
@@ -104,12 +105,25 @@ class UserController extends Controller
         }
 
         $register_users                    = new User();
+        // return dd($register_users->id);
         $register_users->name              = $request->nombre;  
         $register_users->email             = $request->email;
         $register_users->email_verified_at = now();
         $register_users->password          = Hash::make($request->password);
         $register_users->remember_token    = Str::random(10);
         $register_users->save();
+
+        if(count($request->roles) > 1){
+
+            toast('Error al asignar más de un rol.','error');
+
+            return back();
+        }
+        else{
+
+            $register_users->roles()->sync($request->get('roles'));
+                
+        }
         
         Alert::success('Registrado', 'Usuario registrado con éxito');
 
@@ -183,7 +197,7 @@ class UserController extends Controller
         $user          = User::findOrFail($id);
         $user->name    =  $request->nombre;
         $user->email   =  $request->email;
-
+      
       if($request->roles > 0){
 
             if(count($request->roles) > 1){

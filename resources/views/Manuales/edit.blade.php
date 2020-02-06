@@ -191,7 +191,7 @@
                                   </div>
 
                                   <div class="modal-body">
-                                    <input type="hidden" name="bookId" id="bookId" value=""/>
+                                    <input type="text" name="bookId" id="bookId" value=""/>
                                     <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Actualizar_imagen(this.name,'boton2');">Cargar imagen</span>
                                     <input name="imagen" id="imagen" type="file" accept="image/jpeg" style="display: none;" required>
                                   </div>

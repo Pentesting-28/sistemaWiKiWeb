@@ -38,10 +38,6 @@
                                 @enderror
                            </div>
 
-
-
-                            <hr>
-
                               <div class="alert alert-primary" role="alert">
 
                               <center><b>Seleccione solo un rol.</b></center>
@@ -49,19 +45,19 @@
                             </div>
 
                             <h3>Lista de roles</h3>
-                            <div class="form-group">
-                                <ul class="list-unstyled">
+                            <div class="form-row">
+                    
                                     @foreach($roles as $role)
-                                    <li>
+                                    <div class="form-group col-md-3">
                                         <label>
-                                        <input type="checkbox" name="roles[]"  value="{{$role->id}}" @if($editar->roles->contains($role->id)) checked="checked" @endif>
+                                        <input type="checkbox" name="roles[]" value="{{$role->id}}" @if($editar->roles->contains($role->id)) checked="checked" @endif>
                                         {{ $role->name }}
                                         <em>({{ $role->description }})</em>
                                         </label>
-                                    </li>
+                                    </div>
                                     @endforeach
-                                </ul>
-                            </div>
+                                
+                            </div><br>
                             <div class="form-group">
                                 <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Actualizar registro">
                             </div>

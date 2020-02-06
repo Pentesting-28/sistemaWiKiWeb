@@ -39,6 +39,7 @@ function guardar_mostrar(){
 
 }
 
+
 // $(document).ready(function(){
 //     $("#alerta").fadeOut(5000);
 // });
