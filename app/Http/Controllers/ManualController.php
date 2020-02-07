@@ -19,7 +19,7 @@ class ManualController extends Controller
      */
     public function index()
     {
-        $manuales = Manual::paginate(10); 
+        $manuales = Manual::orderBy('id', 'ASC')->paginate(10); 
 
         return view('Manuales.index',compact('manuales'));
         
@@ -27,12 +27,14 @@ class ManualController extends Controller
 
     public function busqueda(Request $request){
 
-        $name = $request->name;
-        $date = $request->date;
+        $name  = $request->name;
+        $date  = $request->date;
+        $email = $request->email;
         
-        $manuales = Manual::where('name','LIKE',"%$name%" )
-                              ->where('created_at','LIKE',"%$date%" )
-                              ->paginate(10);
+        $manuales = Manual::orderBy('id', 'ASC')->where('name','LIKE',"%$name%" )
+                                                ->where('created_at','LIKE',"%$date%" )
+                                                ->where('author', 'LIKE',"%$email%")
+                                                ->paginate(10);
 
         if ($name !== null or $date !== null) {
             
@@ -61,7 +63,7 @@ class ManualController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   
         return view('Manuales.create');
     }
 
@@ -101,6 +103,7 @@ class ManualController extends Controller
             $manual               = new Manual();
             $manual->name         = $request->titulo;
             $manual->description  = $request->descripcion;
+            $manual->author       = $request->author;
             $manual->save();
           
         if($request->Subtitulo && $request->Contenido){

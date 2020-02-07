@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/login_footer.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap-grid.min.css') }}">
+    <!--link rel="stylesheet" href="{{ asset('/css/bootstrap-grid.min.css') }}"-->
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
 
 
@@ -31,7 +31,7 @@
 
             <center>
 
-                <img src=" {{ asset('/imagenes/logo_cantvnew.png')}}" style="width:100%; height: 60px;">
+                <img src=" {{ asset('/imagenes/logo_cantvnew.png')}}" style="width:90%; height: 60px;">
 
             </center>
 

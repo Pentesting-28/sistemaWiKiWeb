@@ -37,8 +37,8 @@
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
-                            <th width="10px">ID</th>
                             <th>Nombre</th>
+                            <th>Fecha</th>
                             <th colspan="3">&nbsp;</th>
                         </tr>
                       </thead>
@@ -49,9 +49,10 @@
 
                             <tr>
 
-                                <td>{{ $role->id }}</td>
-                           
                                 <td>{{ $role->name }}</td>
+                           
+                                <td>{{ $role->created_at }}</td>
+
 
                                 <td width="10px" >
                                     @can('roles.show')

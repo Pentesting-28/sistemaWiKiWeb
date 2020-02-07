@@ -53,8 +53,8 @@
                             <tr>
 
                                 <td>{{ $usuario->name }}</td>
-                                <td>{{ $usuario-> created_at}}</td>
-                                <td>{{ $usuario-> email}}</td>
+                                <td>{{ $usuario->created_at}}</td>
+                                <td>{{ $usuario->email}}</td>
 
                                 
 

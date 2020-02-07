@@ -53,7 +53,7 @@
 
                       <div class="btn-group btn-sm pull-right float-right" role="group" aria-label="Basic example">
                          {{-- <span>Agregar subtitulos:</span> --}}
-                          <input type="number" id="member">
+                          <input type="number" id="member" min="1" pattern="^[0-9]+">
                           <input type="button" id="show" onclick="guardar_ocultar();Agregar_subtitulos();" value="Agregar subtitulos" class="btn btn-sm btn-success mx-1">
                       </div><br><br>
 
@@ -67,6 +67,7 @@
                               </div><br>
                        </div>  
                   </div>
+                  <input type="hidden" name="author" value="{{Auth::user()->email}}">
                </form> 
             </div>
         </div>
@@ -141,6 +142,11 @@
 
                 <input type="file" id="file" name="imagen[]" accept="image/jpeg" style="display: none;"><br>
 
+                <label>Imagen:</label>
+                <input type="file" onchange="loadImg()" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
+                <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
+                <img src="" width="150px" height="120px" id="imagenmuestra">
+
              </div>
 
            </div>`
@@ -152,8 +158,75 @@
 
         });
 
+
       }
     }
+</script>
+
+
+<br><br>
+{{-- <form id="form1">
+  <input type='file' id="imagen" />
+  <br>
+  <img id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" />
+</form>  --}}
+{{-- <label>Imagen:</label>
+<input type="file" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
+<input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
+<img src="" width="150px" height="120px" id="imagenmuestra"> --}}
+<script type="text/javascript">
+
+  // function readURL(input) {
+  //       if (input.files && input.files[0]) {
+  //         var reader = new FileReader();
+  //         reader.onload = function(e) {
+  //           // Asignamos el atributo src a la tag de imagen
+  //           $('#imagenmuestra').attr('src', e.target.result);
+  //         }
+  //         reader.readAsDataURL(input.files[0]);
+  //       }
+  //     }
+
+  function loadImg() {
+    console.log('camnio')        
+  }
+
+      // El listener va asignado al input
+      // $("#imagen").change(function() {
+      //   readURL(this);
+      // });
+
+
+  // function readURL(input) {
+  //   if (input.files && input.files[0]) {
+  //     var reader = new FileReader();
+  //     reader.onload = function(e) {
+  //       // Asignamos el atributo src a la tag de imagen
+  //       $('#imagenmuestra').attr('src', e.target.result);
+  //     }
+  //     reader.readAsDataURL(input.files[0]);
+  //   }
+  // }
+
+  // // El listener va asignado al input
+  // $("#imagen").change(function() {
+  //   readURL(this);
+  // });
+  
+  // function readImage (input) {
+  //   if (input.files && input.files[0]) {
+  //     var reader = new FileReader();
+  //     reader.onload = function (e) {
+  //         $('#blah').attr('src', e.target.result); // Renderizamos la imagen
+  //     }
+  //     reader.readAsDataURL(input.files[0]);
+  //   }
+  // }
+
+  // $("#imagen").change(function () {
+  //   // Código a ejecutar cuando se detecta un cambio de archivO
+  //   readImage(this);
+  // });
 </script>
 
 @endsection

@@ -25,9 +25,10 @@
                           <div class="btn-group" role="group" aria-label="Basic example">
                             <input  type="search" name="name" class="form-control" placeholder="Nombre del manual">
                             <input  type="date"   name="date" class="form-control">
+                            <input  type="email"  name="email" class="form-control" placeholder="Correo electrónico"> 
                             <button type="submit" class="btn btn-success">Buscar</button>
 
-                            @can('roles.create')
+                            @can('manuales.create')
                             <a href="{{route('manuales.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Nuevo</a>
                             @endcan
 
@@ -40,10 +41,11 @@
                       <table class="table table-striped table-hover">
                         <thead>
                           <tr>
-                              <th width="10px">ID</th>
                               <th>Nombre</th>
-                              <th colspan="3">&nbsp;
-                              </th>
+                              <th>Fecha</th>
+                              <th>Autor</th>
+                              <th colspan="3">&nbsp;</th>
+                              
                           </tr>
                         </thead>
 
@@ -53,9 +55,11 @@
 
                               <tr>
 
-                                  <td>{{ $manual->id }}</td>
-                             
                                   <td>{{ $manual->name }}</td>
+                             
+                                  <td>{{ $manual->created_at }}</td>
+
+                                  <td>{{ $manual->author }}</td>
 
                                   <td width="10px" >
                                       

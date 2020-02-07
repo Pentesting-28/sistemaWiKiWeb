@@ -20,19 +20,19 @@ class RoleController extends Controller
     public function index(Request $request)
     {
 
-        $roles = Role::paginate(10);
+        $roles = Role::orderBy('id', 'ASC')->paginate(10);
         return view('roles.index', compact('roles'));
 
     }
 
     public function busqueda(Request $request){
 
-        $name = $request->name;
-        $date = $request->date;
+        $name    = $request->name;
+        $date    = $request->date;
 
-        $roles = Role::where('name','LIKE',"%$name%" )
-                     ->where('created_at','LIKE',"%$date%" )
-                     ->paginate(10);
+        $roles = Role::orderBy('id', 'ASC')->where('name','LIKE',"%$name%" )
+                                           ->where('created_at','LIKE',"%$date%" )
+                                           ->paginate(10);
 
         if ($name !== null or $date !== null) {
             
