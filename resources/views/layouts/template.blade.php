@@ -13,7 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/js/app.js') }}"></script>
-    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+{{--     <script src="{{ asset('/js/bootstrap.min.js') }}"></script> --}}
     <script src="{{ asset('/js/bootstrap.js') }}"></script>
 
 
@@ -23,8 +23,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{{ asset('/css/bootstrap-grid.min.css') }}"> -->
+{{--     <link rel="stylesheet" href="{{ asset('/css/bootstrap-grid.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    
 
 
 
@@ -46,20 +47,22 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-
-                @can('manuales.index')
-
-                <a class="nav-link text-white" href="{{ route('manuales.index') }}">Manuales</a>
+                
                     
-                @endcan
-                    
-                @can('users.index')
+                @can('manuales.show', 'manuales.create', 'manuales.edit', 'manuales.destroy')
+
+                  <a class="nav-link text-white" href="{{ route('manuales.index') }}">Manuales</a>
+
+                @endcan 
+
+                   
+                @can('users.show', 'users.create', 'users.edit', 'users.destroy')
 
                 <a class="nav-link text-white" href="{{ route('users.index') }}">Usuarios </a>
                     
                 @endcan
                     
-                @can('roles.index')
+                @can('roles.show', 'roles.create', 'roles.edit', 'roles.destroy')
 
                <a class="nav-link text-white" href="{{ route('roles.index') }}">Roles</a>
                     

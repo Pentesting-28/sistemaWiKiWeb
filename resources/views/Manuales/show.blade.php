@@ -2,9 +2,10 @@
 
 @section('content')
 
-<div class="container" >
+<div class="container">
+
         <div class="col-md-12 fluid-center" >
-            <div class="card" style="box-shadow: #999 -2px -2px 10px 10px ; border-color: black; border-width:2px">	
+            <div class="card" style="-webkit-box-shadow: -2px -2px 10px 10px rgba(0,0,0,0.14);-moz-box-shadow: -2px -2px 10px 10px rgba(0,0,0,0.14);box-shadow: -2px -2px 10px 10px rgba(0,0,0,0.14);">	
                 <div class="container" style="background: #dce8f0">
                     <div class="section-header">
                         <div class="container">
@@ -35,7 +36,9 @@
                                   <br><hr><br>
 
                             @endforeach
-
+                            <div align="center">
+                              <a class="btn btn-sm btn-success" href="{{'/manuals'}}">Volver</a>
+                            </div>
                          </div><br><br>
                          
                         </div>

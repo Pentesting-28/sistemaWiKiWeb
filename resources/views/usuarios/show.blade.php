@@ -1,12 +1,13 @@
 @extends('layouts.template')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
-                  <a href="{{route('users.index')}}" class="text-white"style="text-decoration:none" ><h5>Detalles del Usuario</h5></a>
+                  <h5>Detalles del Usuario</h5>
 
                 </div>
 
@@ -63,7 +64,16 @@
                           </div>
                                 
                       @endif
+                      
+                      <div class="form-group">
+
+                        <div class="col-md-6 offset-md-5">
+                          <a class="btn btn-sm btn-success" href="{{'/users'}}">Volver</a>
+                        </div>
+
+                      </div>
                 </div>
+
             </div>
         </div>
     </div>

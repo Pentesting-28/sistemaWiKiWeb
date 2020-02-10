@@ -14,12 +14,7 @@ $(document).ready(function(){
 
 var btn_1 = document.getElementById('show');
 var btn_2 = document.getElementById('guardar');
-
-function mostrarBoton() {
-  
-  btn_1.style.display = 'none';
-
-}
+var btn_3 = document.getElementById('volver');
 
 function mostrarBotons() {
 
@@ -39,6 +34,17 @@ function guardar_mostrar(){
 
 }
 
+function volver_ocultar(){
+  
+  btn_3.style.display = 'none';
+
+}
+
+function volver_mostrar(){
+
+  btn_3.style.display = 'inline';
+
+}
 
 // $(document).ready(function(){
 //     $("#alerta").fadeOut(5000);

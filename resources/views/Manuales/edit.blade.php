@@ -1,14 +1,15 @@
 @extends('layouts.template') 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
 
-                    <a href="{{route('manuales.index')}}" class="text-white" style="text-decoration:none">
+                    
                         <h5>Edición de Manual</h5>
-                    </a>
+                    
 
                 </div>
 
@@ -65,15 +66,19 @@
                     <div>
                         <form action="{{ route('manuales.update', $edit_manuals[0]->id) }}" method="POST">
 
-                            @csrf @method('PUT')
+                            @csrf 
+                            @method('PUT')
 
                             <div class="form-group">
 
                                 <label>Título</label>
                                 <input type="text" name="titulo" class="form-control @error('titulo') is-invalid @enderror titulo" value="{{ old('titulo') ?? $edit_manuals[0]->name }}" required maxlength="255"> @error('titulo')
-                                <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span> @enderror
+                                    <span class="invalid-feedback" role="alert">
+                                      <strong>
+                                         {{ $message }}
+                                      </strong>
+                                    </span> 
+                          @enderror
 
                             </div>
 
@@ -142,7 +147,8 @@
                         <!-- ELIMINA LOS SUBTITULOS RELACIONADOS CON EL ID DEL MANUAL -->
                         <form action="{{route('subtitle.destroy', $edit_manual->id)}}" method="POST">
 
-                            @csrf @method('DELETE')
+                            @csrf 
+                            @method('DELETE')
 
                             <input type="submit" class="btn btn-sm btn-danger float-right mx-1" value="Eliminar subtítulo">
 
@@ -154,7 +160,8 @@
 
                     <!-- ACTUALIZA LA IMAGEN RELACIONADA CON EL ID DEL SUBTITULOS -->
                     <form action="{{route('imagen.update', $edit_manual->imagen->id)}}" method="POST" enctype="multipart/form-data">
-                        @csrf @method('PUT')
+                        @csrf 
+                        @method('PUT')
 
                         <div>
 
@@ -196,7 +203,8 @@
                         <!-- ELIMINA LA IMAGEN RELACIONADA CON EL ID DEL SUBTITULOS -->
                         <form action="{{route('imagen.destroy', $edit_manual->imagen->id)}}" method="POST">
 
-                            @csrf @method('DELETE')
+                            @csrf 
+                            @method('DELETE')
 
                             <input type="submit" value="Eliminar imagen" class="btn btn-sm btn-danger pull-right float-right mx-1">
 
@@ -236,10 +244,7 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <input type="hidden" name="idsubtitle" id="idsubtitle" value="{{$edit_manual->id}}" />
-
-                                        
-
+                                        <input type="hidden" name="idsubtitle" id="idsubtitle" value="{{$edit_manual->id}}"/>
 
                                         <center>
                                           <label><h4>Vista Previa</h4></label><br>                   
@@ -269,8 +274,9 @@
 
                         <input type="hidden" name="id_manuals" value="{{$edit_manuals[0]->id}}">
 
-                        <input type="button" id="show" onclick="mostrarBoton()" value="Nuevo subtítulo" class="btn btn-sm btn-success pull-right float-right">
 
+                        <input type="button" id="show" onclick="mostrarBoton();volver_btn();" value="Nuevo subtítulo" class="btn btn-sm btn-success pull-right float-right">
+                        <a class="btn btn-sm btn-success pull-right float-right mx-1" id="volver" href="{{'/manuals'}}">Volver</a>
                         <div id="element" style="display: none;">
                             <br>
 
@@ -334,8 +340,10 @@
 
                                 <div id="close">
                                     <center>
-                                        <input type="button" id="hide" onclick="mostrarBotons()" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
-                                        <input type="submit" class="btn btn-sm text text-white " style="background-color:#0058A8;" value="Guardar subtítulo"> </center>
+                                        <a class="btn btn-sm btn-success" id="volver" href="{{'/manuals'}}">Volver</a>
+                                        <input type="button" id="hide" onclick="mostrarBotons();volver_btn_mostrar();" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
+                                        <input type="submit" class="btn btn-sm text text-white " style="background-color:#0058A8;" value="Guardar subtítulo"> 
+                                    </center>
                                 </div>
                                 <br>
                             </div>
@@ -348,122 +356,6 @@
 </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--style type="text/css">
-    #view_Añadir_img1 {
-        width: 300px;
-        height: 150px;
-        margin-top: 25px;
-    }
-
-    #view_Añadir_img2{
-        width: 300px;
-        height: 150px;
-        margin-top: 25px;
-    }
-</style-->
-{{--
-<input type="file" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
-<input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
-<img src="" width="150px" height="120px" id="imagenmuestra"> --}}
-
-{{-- <form id="form1">
-    <input type='file' id="imgInp" />
-    <br>
-    <img id="blah" src="https://via.placeholder.com/200" alt="Tu imagen" />
-</form> --}}
 <script src="{{ asset('/js/edit_manual.js') }}"></script>
-
-<!--script type="text/javascript">
-    function readImagee(input) {
-      
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#view_Añadir_img1').attr('src', e.target.result); // Renderizamos la imagen
-            }
-            reader.readAsDataURL(input.files[0]);
-
-        }
-    }
-
-    $("#Añadir_img1").change(function() {
-        // Código a ejecutar cuando se detecta un cambio de archivO
-        readImage(this);
-    });
-
-    function readImage(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#view_Añadir_img2').attr('src', e.target.result); // Renderizamos la imagen
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#Añadir_img2").change(function() {
-        // Código a ejecutar cuando se detecta un cambio de archivO
-        readImage(this);
-    });
-
-    
-    // function readURL(input) {
-    // if (input.files && input.files[0]) {
-    //   var reader = new FileReader();
-    //   reader.onload = function(e) {
-    // Asignamos el atributo src a la tag de imagen
-    //       $('#imagenmuestra').attr('src', e.target.result);
-    //     }
-    //     reader.readAsDataURL(input.files[0]);
-    //   }
-    // }
-
-    // El listener va asignado al input
-    // $("#imagen").change(function() {
-    //   readURL(this);
-    // });
-</script-->
 
 @endsection

@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
 
-                  <a href="{{route('manuales.index')}}" class="text-white"style="text-decoration:none" ><h5>Creación de Manual</h5></a>
+                  <h5>Creación de Manual</h5>
 
                 </div>
 
@@ -46,15 +46,18 @@
                       </div><br>
 
                       <div class="form-group">
-
-                        <center><input type="submit" id="guardar" class="btn btn-sm text text-white" value="Guardar Manual" style="background-color:#0058A8;"></center>
-
+                        
+                        <center>
+                          <a class="btn btn-sm btn-success" id="volver" href="javascript: history.go(-1)">Volver</a>
+                          <input type="submit" id="guardar" class="btn btn-sm text text-white" value="Guardar Manual" style="background-color:#0058A8;">
+                        </center>
+                        
                       </div>
 
                       <div class="btn-group btn-sm pull-right float-right" role="group" aria-label="Basic example">
                          {{-- <span>Agregar subtitulos:</span> --}}
                           <input type="number" id="member" min="1" pattern="^[0-9]+">
-                          <input type="button" id="show" onclick="guardar_ocultar();Agregar_subtitulos();" value="Agregar subtitulos" class="btn btn-sm btn-success mx-1">
+                          <input type="button" id="show" onclick="guardar_ocultar();volver_ocultar();Agregar_subtitulos();" value="Agregar subtitulos" class="btn btn-sm btn-success mx-1">
                       </div><br><br>
 
                        <div id="element" style="display: none;"><br>
@@ -62,8 +65,11 @@
                                <div id="container"/></div>
 
                                <div id="close">
-                                    <center> <input type="button" id="hide" onclick="mostrarBotons();guardar_mostrar();" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
-                                    <input type="submit" id="guardar2" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar manual"> </center>
+                                  <center>
+                                    <a class="btn btn-sm btn-success" id="volver" href="{{'/manuals'}}">Volver</a> 
+                                    <input type="button" id="hide" onclick="volver_mostrar();mostrarBotons();guardar_mostrar();" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
+                                    <input type="submit" id="guardar2" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar manual"> 
+                                  </center>
                               </div><br>
                        </div>  
                   </div>
@@ -142,11 +148,6 @@
 
                 <input type="file" id="file" name="imagen[]" accept="image/jpeg" style="display: none;"><br>
 
-                <label>Imagen:</label>
-                <input type="file" onchange="loadImg()" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
-                <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
-                <img src="" width="150px" height="120px" id="imagenmuestra">
-
              </div>
 
            </div>`
@@ -161,72 +162,6 @@
 
       }
     }
-</script>
-
-
-<br><br>
-{{-- <form id="form1">
-  <input type='file' id="imagen" />
-  <br>
-  <img id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" />
-</form>  --}}
-{{-- <label>Imagen:</label>
-<input type="file" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
-<input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
-<img src="" width="150px" height="120px" id="imagenmuestra"> --}}
-<script type="text/javascript">
-
-  // function readURL(input) {
-  //       if (input.files && input.files[0]) {
-  //         var reader = new FileReader();
-  //         reader.onload = function(e) {
-  //           // Asignamos el atributo src a la tag de imagen
-  //           $('#imagenmuestra').attr('src', e.target.result);
-  //         }
-  //         reader.readAsDataURL(input.files[0]);
-  //       }
-  //     }
-
-  function loadImg() {
-    console.log('camnio')        
-  }
-
-      // El listener va asignado al input
-      // $("#imagen").change(function() {
-      //   readURL(this);
-      // });
-
-
-  // function readURL(input) {
-  //   if (input.files && input.files[0]) {
-  //     var reader = new FileReader();
-  //     reader.onload = function(e) {
-  //       // Asignamos el atributo src a la tag de imagen
-  //       $('#imagenmuestra').attr('src', e.target.result);
-  //     }
-  //     reader.readAsDataURL(input.files[0]);
-  //   }
-  // }
-
-  // // El listener va asignado al input
-  // $("#imagen").change(function() {
-  //   readURL(this);
-  // });
-  
-  // function readImage (input) {
-  //   if (input.files && input.files[0]) {
-  //     var reader = new FileReader();
-  //     reader.onload = function (e) {
-  //         $('#blah').attr('src', e.target.result); // Renderizamos la imagen
-  //     }
-  //     reader.readAsDataURL(input.files[0]);
-  //   }
-  // }
-
-  // $("#imagen").change(function () {
-  //   // Código a ejecutar cuando se detecta un cambio de archivO
-  //   readImage(this);
-  // });
 </script>
 
 @endsection

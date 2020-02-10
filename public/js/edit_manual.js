@@ -9,6 +9,7 @@
 
 
   var btn_1 = document.getElementById('show');
+  var btn_2 = document.getElementById('volver');
         
   function mostrarBoton(){
 
@@ -19,6 +20,18 @@
   function mostrarBotons(){
 
     btn_1.style.display = 'inline';
+
+  }
+
+  function volver_btn(){
+
+    btn_2.style.display = 'none';
+
+  }
+
+  function volver_btn_mostrar(){
+
+    btn_2.style.display = 'inline';
 
   }
 

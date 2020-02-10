@@ -23,8 +23,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
 
 //Users
-Route::get('users','UserController@index')->name('users.index')->middleware('can:users.index');
-Route::get('users/busqueda','UserController@busqueda')->name('users.busqueda')->middleware('can:users.index');
+Route::get('users','UserController@index')->name('users.index')->middleware('can:users.show,users.create,users.edit,users.destroy');
+Route::get('users/search','UserController@busqueda')->name('users.busqueda')->middleware('can:users.show,users.create,users.edit,users.destroy');
 Route::get('users/create','UserController@create')->name('users.create')->middleware('can:users.create');
 Route::post('users/store','UserController@store')->name('users.store')->middleware('can:users.create');
 Route::get('users/{id}','UserController@show')->name('users.show')->middleware('can:users.show');
@@ -33,24 +33,24 @@ Route::put('users/{user}','UserController@update')->name('users.update')->middle
 Route::delete('users/{id}','UserController@destroy')->name('users.destroy')->middleware('can:users.destroy');
 
 //Roles
-Route::get('roles','RoleController@index')->name('roles.index')->middleware('can:roles.index');
-Route::get('roles/busqueda','RoleController@busqueda')->name('roles.busqueda')->middleware('can:roles.index');
-Route::get('roles/create','RoleController@create')->name('roles.create')->middleware('can:roles.create');
-Route::post('roles/store','RoleController@store')->name('roles.store')->middleware('can:roles.create');
-Route::get('roles/{id}','RoleController@show')->name('roles.show')->middleware('can:roles.show');
-Route::get('roles/{id}/edit','RoleController@edit')->name('roles.edit')->middleware('can:roles.edit');
-Route::put('roles/{id}','RoleController@update')->name('roles.update')->middleware('can:roles.edit');
-Route::delete('roles/{id}','RoleController@destroy')->name('roles.destroy')->middleware('can:roles.destroy');
+Route::get('role','RoleController@index')->name('roles.index')->middleware('can:roles.show,roles.create,roles.edit,roles.destroy');
+Route::get('role/search','RoleController@busqueda')->name('roles.busqueda')->middleware('can:roles.show,roles.create,roles.edit,roles.destroy');
+Route::get('role/create','RoleController@create')->name('roles.create')->middleware('can:roles.create');
+Route::post('role/store','RoleController@store')->name('roles.store')->middleware('can:roles.create');
+Route::get('role/{id}','RoleController@show')->name('roles.show')->middleware('can:roles.show');
+Route::get('role/{id}/edit','RoleController@edit')->name('roles.edit')->middleware('can:roles.edit');
+Route::put('role/{id}','RoleController@update')->name('roles.update')->middleware('can:roles.edit');
+Route::delete('role/{id}','RoleController@destroy')->name('roles.destroy')->middleware('can:roles.destroy');
 
 //Manuales_Procedimientos
-Route::get('Manuales','ManualController@index')->name('manuales.index')->middleware('can:manuales.index');
-Route::get('Manual/busqueda','ManualController@busqueda')->name('manuales.busqueda')->middleware('can:manuales.index');
-Route::get('Manuales/create','ManualController@create')->name('manuales.create')->middleware('can:manuales.create');
-Route::post('Manuales/store','ManualController@store')->name('manuales.store')->middleware('can:manuales.create');
-Route::get('Manuales/{id}','ManualController@show')->name('manuales.show')->middleware('can:manuales.show');
-Route::get('Manuales/{id}/edit','ManualController@edit')->name('manuales.edit')->middleware('can:manuales.edit');
-Route::put('Manuales/{id}','ManualController@update')->name('manuales.update')->middleware('can:manuales.edit');
-Route::delete('Manuales/{id}','ManualController@destroy')->name('manuales.destroy')->middleware('can:manuales.destroy');
+Route::get('manuals','ManualController@index')->name('manuales.index')->middleware('can:manuales.show,manuales.create,manuales.edit,manuales.destroy');
+Route::get('manuals/search','ManualController@busqueda')->name('manuales.busqueda')->middleware('can:manuales.show,manuales.create,manuales.edit,manuales.destroy');
+Route::get('manuals/create','ManualController@create')->name('manuales.create')->middleware('can:manuales.create');
+Route::post('manuals/store','ManualController@store')->name('manuales.store')->middleware('can:manuales.create');
+Route::get('manuals/{id}','ManualController@show')->name('manuales.show')->middleware('can:manuales.show');
+Route::get('manuals/{id}/edit','ManualController@edit')->name('manuales.edit')->middleware('can:manuales.edit');
+Route::put('manuals/{id}','ManualController@update')->name('manuales.update')->middleware('can:manuales.edit');
+Route::delete('manuals/{id}','ManualController@destroy')->name('manuales.destroy')->middleware('can:manuales.destroy');
 
 //Subtitulo
 Route::post('Subtitle/store','SubtitleController@store')->name('subtitle.store')->middleware('can:manuales.create');

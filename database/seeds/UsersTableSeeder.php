@@ -28,19 +28,45 @@ class UsersTableSeeder extends Seeder
 
         //factory(User::class, 20)->create();
 
-        //Admin
+        //Role Admin
         $role_admin          = Role::create([
-        	'name'           => 'Admin',
+        	'name'           => 'Administrador',
         	'slug'  	     => 'admin',
         	'special' 	     => 'all-access',
-            'description'    => 'Super Usuario'
+            'description'    => 'Acceso total al sistema'
         ]);
 
-        /*$admin->givePermissionTo(Permission::all());*/
+        //Role users
+        $role_Users          = Role::create([
+            'name'           => 'Usuarios',
+            'slug'           => 'usuarios',
+            'description'    => 'Acceso total a usuarios'
+        ]);
 
-        //User Admin
+        $role_Users->givePermissionTo('users.show', 'users.create', 'users.edit','users.destroy');
+
+        //Role roles
+        $role_Roles         =  Role::create([
+            'name'           => 'Roles',
+            'slug'           => 'roles',
+            'description'    => 'Acceso total a roles'
+        ]);
+
+        $role_Roles->givePermissionTo('roles.show', 'roles.create', 'roles.edit','roles.destroy');
+
+        //Role manuals
+        $role_Manual         =  Role::create([
+            'name'           => 'Manuales',
+            'slug'           => 'manuales',
+            'description'    => 'Acceso total a manuales'
+        ]);
+
+        $role_Manual->givePermissionTo('manuales.show', 'manuales.create', 'manuales.edit','manuales.destroy');
+
+        //Asing role the Admin to user 
         $user = User::find($users->id); //Admin
         $user->roles()->attach($role_admin);
+        /*$admin->givePermissionTo(Permission::all());*/
 
     }
 }

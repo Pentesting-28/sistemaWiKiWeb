@@ -14,11 +14,11 @@ class PermissionsTableSeeder extends Seeder
     {
 
         //Users
-        Permission::create([
-            'name'          => 'Navegar usuarios',
-            'slug'          => 'users.index',
-            'description'   => 'Lista y navega todos los usuarios del sistema',
-        ]);
+        // Permission::create([
+        //     'name'          => 'Navegar usuarios',
+        //     'slug'          => 'users.index',
+        //     'description'   => 'Lista y navega todos los usuarios del sistema',
+        // ]);
 
         Permission::create([
             'name'          => 'Ver detalle de usuario',
@@ -47,11 +47,11 @@ class PermissionsTableSeeder extends Seeder
 
 
         //Roles
-        Permission::create([
-            'name'          => 'Navegar roles',
-            'slug'          => 'roles.index',
-            'description'   => 'Lista y navega todos los roles del sistema',
-        ]);
+        // Permission::create([
+        //     'name'          => 'Navegar roles',
+        //     'slug'          => 'roles.index',
+        //     'description'   => 'Lista y navega todos los roles del sistema',
+        // ]);
 
         Permission::create([
             'name'          => 'Ver detalle de un rol',
@@ -80,11 +80,11 @@ class PermissionsTableSeeder extends Seeder
 
 
         //Manuales
-        Permission::create([
-            'name'          => 'Navegar manuales',
-            'slug'          => 'manuales.index',
-            'description'   => 'Lista y navega todos los manuales del sistema',
-        ]);
+        // Permission::create([
+        //     'name'          => 'Navegar manuales',
+        //     'slug'          => 'manuales.index',
+        //     'description'   => 'Lista y navega todos los manuales del sistema',
+        // ]);
 
         Permission::create([
             'name'          => 'Ver detalle de un manual',

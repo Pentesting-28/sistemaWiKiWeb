@@ -1,17 +1,18 @@
 @extends('layouts.template')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card" style="box-shadow: #999 15px 15px 10px; ">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
 
-                <a href="{{route('users.index')}}" class="text-white"style="text-decoration:none" ><h5>Crear</h5></a>
+                <h5>Crear</h5>
 
             </div>
 
-                <div class="card-body"><br>
+                <div class="card-body">
                     
                     <form action="{{ route('users.store') }}" method="POST">
                         @csrf
@@ -91,16 +92,18 @@
                                     </div>
                                     @endforeach
                                 
-                            </div><br>
+                            </div>
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-5">
+                                    <a class="btn btn-sm btn-success" href="{{'/users'}}">Volver</a>
                                     <button type="submit" class="btn btn-sm text text-white" style="background-color:#0058A8;">
                                         {{ __('Registrar') }}
                                     </button>
+
                                 </div>
                             </div>
-                    </form><br>
+                    </form>
                 </div>
             </div>
         </div>

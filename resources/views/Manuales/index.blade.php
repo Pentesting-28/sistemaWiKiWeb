@@ -9,7 +9,7 @@
 
                   <div class="card-header text text-white" style="background-color:#0058A8;">
 
-                  <a href="{{route('manuales.index')}}" class="text-white"style="text-decoration:none" ><h5>Lista de Manuales</h5></a>
+                  <h5>Lista de Manuales</h5>
            
                   </div>
 
@@ -26,10 +26,10 @@
                             <input  type="search" name="name" class="form-control" placeholder="Nombre del manual">
                             <input  type="date"   name="date" class="form-control">
                             <input  type="email"  name="email" class="form-control" placeholder="Correo electrónico"> 
-                            <button type="submit" class="btn btn-success">Buscar</button>
+                            <button type="submit" class="btn text text-white" style="background-color: #717171">Buscar</button>
 
                             @can('manuales.create')
-                            <a href="{{route('manuales.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Nuevo</a>
+                            <a href="{{route('manuales.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
                             @endcan
 
                           </div>
@@ -72,7 +72,7 @@
                                    <td width="10px" >
                                       
                                       @can('manuales.edit')
-                                      <a href="{{ route('manuales.edit', $manual->id) }}" style="background-color:#0058A8;" class="btn btn-sm text text-white">Editar</a>
+                                      <a href="{{ route('manuales.edit', $manual->id) }}" style="background-color:#28a83b;" class="btn btn-sm text text-white">Editar</a>
                                       @endcan
 
                                   </td>
@@ -87,7 +87,7 @@
 
                                               @method('DELETE')
         
-                                              <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                              <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar {{$manual->name}}?')">Eliminar</button>
 
                                          </form>
 

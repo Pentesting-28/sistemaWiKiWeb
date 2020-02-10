@@ -1,13 +1,14 @@
 @extends('layouts.template')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
                     
-                    <a href="{{route('roles.index')}}" class="text-white"style="text-decoration:none" ><h5>Editar Roles</h5></a>
+                   <h5>Editar Roles</h5>
                     
                 </div>
 
@@ -93,7 +94,10 @@
                                 </ul>
                             </div>
                             <div class="form-group">
+                              <div class="col-md-6 offset-md-5">
+                                <a class="btn btn-sm btn-success" href="{{'/role'}}">Volver</a>
                                 <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Guardar">
+                              </div>
                             </div>
                     </form>
                 </div>

@@ -1,12 +1,13 @@
 @extends('layouts.template')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
-                    <a href="{{route('roles.index')}}" class="text-white"style="text-decoration:none" ><h5>Crear Roles</h5></a>
+                   <h5>Crear Roles</h5>
                 </div>
 
                 <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
@@ -59,10 +60,10 @@
 
 
                             <div class="form-group">
-
-                            <label> <input type="checkbox" name="all_access" value="all-access">Acceso total</label><br>
-                            <label> <input type="checkbox" name="no_access" value="no-access">Ningún acceso</label>
-
+                             
+                                <label> <input type="checkbox" name="all_access" id="all_access" value="all-access">Acceso total</label><br>
+                                <label> <input type="checkbox" name="no_access" id="all_access" value="no-access">Ningún acceso</label>
+                             
                             </div>
                             <hr>
                             <h3>Lista de permisos</h3>
@@ -81,8 +82,14 @@
 
                                 </ul>
                             </div>
+                            
                             <div class="form-group">
-                                <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Guardar">
+
+                                <div class="col-md-6 offset-md-5">
+                                    <a class="btn btn-sm btn-success" href="{{'/role'}}">Volver</a>
+                                    <input type="submit" class="btn btn-sm text text-white" style="background-color:#0058A8;" onclick="validar()" value="Guardar">
+                                </div>
+
                             </div>
                     </form>
 
@@ -91,5 +98,30 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+function validar(){
+
+var all_access = document.getElementById('all_access');
+
+var no_access  = document.getElementById('no_access');
+
+    if(!all_access.checked && !no_access.checked) {
+
+         alert('all_access y no_access vacio');
+         return false
+    }else{
+
+        alert('fallo');
+        return false
+    }
+
+} 
+
+// elemento = document.getElementById("campo");
+//     if( !elemento.checked ) {
+//       return false;
+//     }
+</script>
 
 @endsection
