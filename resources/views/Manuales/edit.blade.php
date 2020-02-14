@@ -325,6 +325,12 @@
                                                         <span class="btn btn-sm btn-success" onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Añadir_imagen_create(this.name,'btn_Añadir_imagen_create');">Cargar imagen</span>
 
                                                         <input name="imagen" id="Añadir_img2" type="file" accept="image/jpeg" style="display: none;">
+
+                                                        lllll
+
+                                                        <input name="file-input" id="file-input" type="file" />
+                                                       <br />
+                                                       <img id="imgSalida" width="50%" height="50%" src="" />
                                                     </center>
 
                                                 </div>
@@ -357,5 +363,28 @@
 </div>
 
 <script src="{{ asset('/js/edit_manual.js') }}"></script>
+<script>
+     $(function() {
+  $('#file-input').change(function(e) {
+      addImage(e); 
+     });
 
+     function addImage(e){
+      var file = e.target.files[0],
+      imageType = /image.*/;
+    
+      if (!file.type.match(imageType))
+       return;
+  
+      var reader = new FileReader();
+  
+      reader.onload = function(e){
+         var result=e.target.result;
+        $('#imgSalida').attr("src",result);
+      }
+       
+      reader.readAsDataURL(file);
+     }
+    });
+</script>
 @endsection

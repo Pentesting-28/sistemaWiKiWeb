@@ -98,7 +98,7 @@
                                 <div class="col-md-6 offset-md-5">
                                     <a class="btn btn-sm btn-success" href="{{'/users'}}">Volver</a>
                                     <button type="submit" class="btn btn-sm text text-white" style="background-color:#0058A8;">
-                                        {{ __('Registrar') }}
+                                        {{ __('Crear') }}
                                     </button>
 
                                 </div>

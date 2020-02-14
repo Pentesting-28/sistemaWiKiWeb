@@ -57,8 +57,8 @@ class ImagenController extends Controller
             $imagen->ruta               = $path;
             $imagen->save();
 
-        Alert::success('Su imagen fue añadida', 'Imagen añadida con éxito');                
-        return back()->with('mensaje', 'Imagen añadida con éxito');
+        Alert::success('Imagen añadida', 'Su imagen fue añadida con éxito');                
+        return back();//->with('mensaje', 'Imagen añadida con éxito')
     }
 
     /**

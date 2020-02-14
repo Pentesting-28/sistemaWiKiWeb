@@ -62,7 +62,7 @@
                             <div class="form-group">
                               <div class="col-md-6 offset-md-5">
                                 <a class="btn btn-sm btn-success" href="{{'/users'}}">Volver</a>
-                                <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Actualizar registro">
+                                <input type="submit" name="" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Actualizar">
                               </div>
                             </div>
                      </form>

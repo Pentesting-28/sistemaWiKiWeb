@@ -87,7 +87,7 @@
 
                                 <div class="col-md-6 offset-md-5">
                                     <a class="btn btn-sm btn-success" href="{{'/role'}}">Volver</a>
-                                    <input type="submit" class="btn btn-sm text text-white" style="background-color:#0058A8;" onclick="validar()" value="Guardar">
+                                    <input type="submit" class="btn btn-sm text text-white" style="background-color:#0058A8;" value="Guardar">
                                 </div>
 
                             </div>
@@ -100,23 +100,23 @@
 </div>
 
 <script type="text/javascript">
-function validar(){
+// function validar(){
 
-var all_access = document.getElementById('all_access');
+// var all_access = document.getElementById('all_access');
 
-var no_access  = document.getElementById('no_access');
+// var no_access  = document.getElementById('no_access');
 
-    if(!all_access.checked && !no_access.checked) {
+//     if(!all_access.checked && !no_access.checked) {
 
-         alert('all_access y no_access vacio');
-         return false
-    }else{
+//          alert('all_access y no_access vacio');
+//          return false
+//     }else{
 
-        alert('fallo');
-        return false
-    }
+//         alert('fallo');
+//         return false
+//     }
 
-} 
+// } 
 
 // elemento = document.getElementById("campo");
 //     if( !elemento.checked ) {

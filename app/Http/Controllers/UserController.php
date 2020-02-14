@@ -129,7 +129,7 @@ class UserController extends Controller
         }
 
         
-        Alert::success('Registrado', 'Usuario registrado con éxito');
+        Alert::success('Creado', 'Usuario creado con éxito');
 
         return redirect()->route('users.index');
 
