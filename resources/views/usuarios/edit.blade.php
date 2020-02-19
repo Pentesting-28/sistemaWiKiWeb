@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
                     <h5>Edición de Usuario</h5>

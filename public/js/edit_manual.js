@@ -143,7 +143,7 @@ function desactivar_btn_Añadir_imagen_create(name,nombreBotones){
 
 $(document).ready(function() {
   $('input[name="titulo"]').keyup(function(){
-    console.log('titulo')
+    // console.log('titulo')
     let texto = $('input[name="titulo"]').val()
     if (texto.length === 255) {
       $('.alerta-titulo').css('display','inline');
@@ -155,7 +155,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.descripcion').keyup(function(){
     let descripcion = $('.descripcion').val()
-    console.log(descripcion.length)
+    // console.log(descripcion.length)
     if (descripcion.length === 600) {
       $('.alerta-descripcion').css('display','inline');
       $('#alerta-descripcion').fadeOut(6000);
@@ -165,7 +165,7 @@ $(document).ready(function() {
 //**********************************************************
 $(document).ready(function() {
   $('input[name="subtitulo"]').keyup(function(){
-    console.log('subtitulo')
+    // console.log('subtitulo')
     let texto = $('input[name="subtitulo"]').val()
     if (texto.length === 255) {
       $('.alerta-subtitulo').css('display','inline');
@@ -177,7 +177,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.contenido').keyup(function(){
     let contenido = $('.contenido').val()
-    console.log(contenido.length)
+    // console.log(contenido.length)
     if (contenido.length === 600) {
       $('.alerta-contenido').css('display','inline');
       $('#alerta-contenido').fadeOut(6000);
@@ -187,7 +187,7 @@ $(document).ready(function() {
 //**********************************************************
 $(document).ready(function() {
   $('input[name="Subtitulo"]').keyup(function(){
-    console.log('Subtitulo')
+    // console.log('Subtitulo')
     let texto = $('input[name="Subtitulo"]').val()
     if (texto.length === 255) {
       $('.alerta-Subtitulo').css('display','inline');
@@ -199,7 +199,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('.Contenido').keyup(function(){
     let contenido = $('.Contenido').val()
-    console.log(contenido.length)
+    // console.log(contenido.length)
     if (contenido.length === 600) {
       $('.alerta-Contenido').css('display','inline');
       $('#alerta-Contenido').fadeOut(6000);

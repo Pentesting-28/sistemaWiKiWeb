@@ -3,11 +3,18 @@
 @section('content')
 
 <style type="text/css">
+
   img{
   width: 100PX;
   height: 100px;
   margin: 10px;
 }
+  [type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
 </style>
 
 <div class="container">
@@ -70,7 +77,7 @@
 
                        <div id="element" style="display: none;"><br>
 
-                               <div id="container"></div>
+                               <div id="content"></div>
 
                                <div id="close">
                                   <center>
@@ -89,7 +96,6 @@
 </div>
 
 <script src="{{ asset('/js/create_manual.js') }}"></script>
-
 <script type="text/javascript">
 
   function Agregar_subtitulos(){
@@ -99,7 +105,7 @@
     // var i;
     // Contenedor <div> donde se colocará el contenido dinámico
     // var container  = document.getElementById("container");
-    var container = document.getElementById('container');
+    var container = document.getElementById('content');
     //Borrar los contenidos anteriores del contenedor
 
     while (container.hasChildNodes()){
@@ -108,293 +114,212 @@
     }
 
     for (let i=0; i<number;i++){
+
       var cont = 0;
-      var content =`<div class="alert alert-warning" role="alert">
 
-                      <ul>
-                        <li>El campo Subtitulo debe contener al menos 5 caracteres.</li>
-                        <li>El campo Contenido debe contener al menos 5 caracteres.</li>
-                      </ul>
+      var padre = document.createElement('div');
+          padre.id = "con"+i;
+          padre.className = "content alert alert-warning", role="alert";
 
-                    </div>`
+      var ul    = document.createElement('ul');
+          ul.id = "ul"+i;
 
-      $("#container").append(content);
+      var li_1           = document.createElement('li');
+          li_1.innerHTML = "El campo Subtitulo debe contener al menos 5 caracteres.";
+          li_1.id        = "li_1"+i;
 
-      var label_sub1        = document.createElement('label');/* Label  Nombre */
-      label_sub1.innerHTML  = 'Nombre';
-      label_sub1.id         = 'i';
-      document.getElementById('container').appendChild(label_sub1);
+      var li_2           = document.createElement('li');
+          li_2.innerHTML = "El campo Contenido debe contener al menos 5 caracteres.";
+          li_2.id        = "li_2"+i;
 
-      
-      var br1        = document.createElement('br');/* br salto de linea */
-      br1.id         = 'i';
-      document.getElementById('container').appendChild(br1);
-
-
-      var nombre_sub       = document.createElement('input');/* input  Nombre */
-      nombre_sub.type      = "text";
-      nombre_sub.name      = 'Subtitulo[]';
-      nombre_sub.id        = 'i';
-      nombre_sub.className = "form-control";
-      nombre_sub.required  = true;
-      document.getElementById('container').appendChild(nombre_sub);
-
-
-      var br2        = document.createElement('br');/* br salto de linea */
-      br2.id         = 'i';
-      document.getElementById('container').appendChild(br2);
+          container.appendChild(padre);
+          padre.appendChild(ul);
+          ul.appendChild(li_1);
+          ul.appendChild(li_2);
       
 
-      var label_sub2        = document.createElement('label');/* Label  Contenido */
-      label_sub2.innerHTML  = 'Contenido';
-      label_sub2.id         = 'i';
-
-      document.getElementById('container').appendChild(label_sub2);
+      var label_sub1           = document.createElement('label');/* Label  Nombre */
+          label_sub1.innerHTML = 'Nombre';
+          label_sub1.id        = 'label_sub'+i;
+      document.getElementById('content').appendChild(label_sub1);
 
       
-      var contenido_sub       = document.createElement('textarea');/* textarea  Contenido */
-      contenido_sub.type      = "text";
-      contenido_sub.name      = 'Contenido[]';
-      contenido_sub.rows      = '10';
-      contenido_sub.id        = 'i';
-      contenido_sub.className = "form-control";
-      contenido_sub.required  = true;
-      contenido_sub.style     = "resize:none;";
-      document.getElementById('container').appendChild(contenido_sub);
+      var br1    = document.createElement('br');/* br salto de linea */
+          br1.id = 'br1'+ i;
+      document.getElementById('content').appendChild(br1);
 
 
-      var br3      = document.createElement('br');/* br salto de linea */
-          br3.id   = 'i';
-      document.getElementById('container').appendChild(br3);
+      var nombre_sub           = document.createElement('input');/* input  Nombre */
+          nombre_sub.type      = "text";
+          nombre_sub.name      = 'Subtitulo[]';
+          nombre_sub.id        = 'nombre_sub' + i;
+          nombre_sub.className = "Subtitulo form-control";
+          nombre_sub.required  = true;
+      document.getElementById('content').appendChild(nombre_sub);
 
 
-      // var imagen_span      = document.createElement('span');/* span input file */
-      // imagen_span.className= "btn btn-sm btn-primary float-right";
-      // imagen_span.style    = "background-color:#0058A8;";
-      // imagen_span.innerHTML= "Añadir imagen/.jpeg";
-      // imagen_span.onclick  = function () {$(this).parent().find('input[type=file]').click();}
-      // document.getElementById('container').appendChild(imagen_span);
+      var br2    = document.createElement('br');/* br salto de linea */
+          br2.id = 'br2'+i;
+      document.getElementById('content').appendChild(br2);
+      
+
+      var label_sub2           = document.createElement('label');/* Label  Contenido */
+          label_sub2.innerHTML = 'Contenido';
+          label_sub2.id        = 'label_sub2'+i;
+
+      document.getElementById('content').appendChild(label_sub2);
+
+      
+      var contenido_sub           = document.createElement('textarea');/* textarea  Contenido */
+          contenido_sub.type      = "text";
+          contenido_sub.name      = 'Contenido[]';
+          contenido_sub.rows      = '10';
+          contenido_sub.id        = 'contenido_sub'+ i;
+          contenido_sub.className = "Contenido form-control";
+          contenido_sub.required  = true;
+          contenido_sub.style     = "resize:none;";
+      document.getElementById('content').appendChild(contenido_sub);
 
 
-      var imagen_sub           = document.createElement('input');/* input  img*/
+      var br3    = document.createElement('br');/* br salto de linea */
+          br3.id = 'i';
+      document.getElementById('content').appendChild(br3);
+
+      var delete_subtitle           = document.createElement('button');
+          delete_subtitle.innerHTML = "Eliminar subtitulo"; 
+          delete_subtitle.type      = "button";
+          delete_subtitle.id        = "delete_subtitle" + i;
+          delete_subtitle.className = "btn btn-sm btn-danger pull-right float-right";
+
+      document.getElementById('content').appendChild(delete_subtitle);
+
+
+      var delete_img           = document.createElement('button');
+          delete_img.innerHTML = "Eliminar imagen"; 
+          delete_img.type      = "button";
+          delete_img.id        = "delete_img" + i;
+          delete_img.className = "btn btn-sm pull-right float-right mx-1 text text-white";
+          delete_img.style     = "background-color: #717171";
+
+      document.getElementById('content').appendChild(delete_img);
+
+      var label_img           = document.createElement('label');/* Label btn input type="file" */
+          label_img.innerHTML = 'Cargar imagen';
+          label_img.id        = 'label_img'+i;
+          label_img.for       = "imagen";
+          label_img.className = "btn btn-sm btn-success pull-right float-right";
+
+      var imagen_sub           = document.createElement('input');/* input files*/
           imagen_sub.type      = "file";
           imagen_sub.name      = 'imagen[]';
           imagen_sub.accept    = 'image/jpeg';
-          imagen_sub.id        = 'imagen' + i;
-          imagen_sub.onchange  = "handleFiles(this.files)"
-          imagen_sub.style     = "background-color:#0058A8;";
-          imagen_sub.className = "imagen btn btn-sm btn-primary float-right";
+          imagen_sub.id        = 'imagen'+i;
+          imagen_sub.style     = "visibility:hidden";
+
 
       var imagen_sub_img           = document.createElement('img');/* input  img*/
           imagen_sub_img.id        = 'imgSalida' + i;
+          imagen_sub_img.src       = "/images/150.png";
+          imagen_sub_img.className = "rounded";
 
-      document.getElementById('container').appendChild(imagen_sub);
-      document.getElementById('container').appendChild(imagen_sub_img);
-      // <input name="file-input" id="file-input" type="file" />
-      //    <br />
-      //    <img id="imgSalida" width="50%" height="50%" src="" />
- 
+       label_img.appendChild(imagen_sub);
+       document.getElementById('content').appendChild(label_img);
 
-            // console.log(i,'cantidad de imagen')
-      // if (i === cont) {
-      //       console.log(cont,'contador inicial')
+      var br6    = document.createElement('br');/* br salto de linea */
+          br6.id = 'br6'+i;
 
-      //       cont++
-      //       console.log(cont,'contador final')
+      document.getElementById('content').appendChild(br6);
+
+      document.getElementById('content').appendChild(imagen_sub_img);
 
         $(function() {
 
-        $('#imagen'+i).change(function(e) {
-            addImage(e); 
-           });
+          $('#imagen'+i).change(function(e) {
+              addImage(e); 
+             });
 
-           function addImage(e){
-            var file = e.target.files[0],
-            imageType = /image.*/;
-          
-            if (!file.type.match(imageType))
-             return;
+          function addImage(e){
+            var file = e.target.files[0],imageType = /image.*/;
         
-            var reader = new FileReader();
-        
-            reader.onload = function(e){
-               var result=e.target.result;
+              if (!file.type.match(imageType))
+              return;
 
-              $('#imgSalida'+i).attr("src",result);
-            }
-             
-            reader.readAsDataURL(file);
-           }
-          });
-      // }
+              var reader = new FileReader();
       
+                reader.onload = function(e){
+                  var result=e.target.result;
 
-        var img            = document.createElement('div');/* input  Nombre */
-            img.id         = i;
-            img.className = "preview";
-            // img.src   = "https://via.placeholder.com/150";
-            // img.alt   = "Tu imagen";
-
-        document.getElementById('container').appendChild(img);
-
-        var br4        = document.createElement('br');/* br salto de linea */
-            br4.id     = 'i';
-
-        document.getElementById('container').appendChild(br4);
-
-        var br5        = document.createElement('br');/* br salto de linea */
-            br5.id     = 'i';
-        document.getElementById('container').appendChild(br5);
-
-    }
-  };
-        
-</script>
-
-<!--script type="text/javascript">
-
-  //Agregar subtitulos
-
-
-  
-   function Agregar_subtitulos(){
-    // Número de entradas para crear
-    var number = document.getElementById("member").value;
-    // Contenedor <div> donde se colocará el contenido dinámico
-    // var container  = document.getElementById("container");
-    var containerr = document.getElementById("container");
-    // Borrar los contenidos anteriores del contenedor
-    // while (container.hasChildNodes()) {
-
-    //     container.removeChild(container.lastChild);
-    // }
-    for (i=0;i<number;i++){
-
-         var content = 
-
-         `<div class="content">
-         
-           <div class="form-group">
+                  var resul = $('#imgSalida'+i).attr("src",result);
+                }
            
-             <div class="alert alert-warning" role="alert">
+          reader.readAsDataURL(file);
 
-                <ul>
-                  <li>El campo Subtitulo debe contener al menos 5 caracteres.</li>
-                  <li>El campo Contenido debe contener al menos 5 caracteres.</li>
-                </ul>
+         }
+          });
 
-             </div>
+      var br4    = document.createElement('br');/* br salto de linea */
+          br4.id = 'br4'+i;
 
-             <label>Subtítulo</label>
+      document.getElementById('content').appendChild(br4);
 
-             <input type="text"  class="form-control @error('Subtitulo') is-invalid @enderror" name="Subtitulo[]" required maxlength="255">
+      var br5    = document.createElement('br');/* br salto de linea */
+          br5.id = 'br5'+i;
 
-             @error('Subtitulo')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-             @enderror
+      document.getElementById('content').appendChild(br5);
 
-
-           </div>
-
-           <div class="form-group">
-
-             <label>Contenido</label>
-
-             <textarea name="Contenido[]" id="campo" class="form-control @error('Contenido') is-invalid @enderror" rows="10" style="resize:none;" required maxlength="600"></textarea><br>
-
-              @error('Contenido')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-
-             <button type="button" class="btn btn-sm btn-danger pull-right float-right mx-1" >Eliminar Subtitulo</button>
-
-                <span onclick="$(this).parent().find('input[type=file]').click();" class="btn btn-sm btn-primary float-right" style="background-color:#0058A8;">
-
-                    Añadir imagen/.jpeg
-
-                </span>
-
-                <input type="file" id="imgInp"  name="imagen[]" accept="image/jpeg" style="display: none;">
-                
-              <img id="blah" src="https://via.placeholder.com/150" class="rounded float-left" alt="..." width="190" height="70"><br><br><br><br><br>
-               
-
-             </div>
-
-           </div>`
-  
-        $("#container").append(content);
-        $("button").click(function() {
-
-          $(this).closest('div.content').remove();
+        $("#delete_img"+ i).click(function(event) {
+        $("#imagen"+ i).val(''); //valor del input type"file" lo dejamos en null
+        $("#imgSalida"+ i).attr('src', "/images/150.png");
 
         });
 
+        $("#delete_subtitle" + i).click(function() {
+          $("#label_sub"+ i).remove();
+          $("#br1"+ i).remove();
+          $("#nombre_sub"+ i).remove();
+          $("#br2"+ i).remove();
+          $("#label_sub2"+ i).remove();
+          $("#contenido_sub"+ i).remove();
+          $("#br3"+ i).remove();
+          $("#delete_subtitle"+ i).remove();
+          $("#delete_img" + i).remove();
+          $("#label_img" + i).remove();
+          $("#imagen"+ i).remove();
+          $("#imgSalida"+ i).remove();
+          $("#br4"+ i).remove();
+          $("#br5"+ i).remove();
+          $("#br6"+ i).remove();
+          $("#ul"+ i).remove();
+          $("#li_1"+ i).remove();
+          $("#li_2"+ i).remove();
+          $("#con"+ i).remove();
 
-      }
-    }
+        });
 
-</script-->
+        /*La función getElementsByClassName devuelve una lista "viva" de los elementos del HTML,
+        a lo que me refiero es que si eliminas un elemento del HTML también lo eliminas de la
+        lista y esto interfiere con la iteración porque los índices cambian. Una manera de solucionarlo
+        es creando una copia de la lista antes de iterar.*/
 
-{{-- <form id="form1">
-  <input type='file' id="imgInp" />
-  <br>
-  <img id="blah" src="https://via.placeholder.com/150" alt="Tu imagen" />
-</form>  --}}
-<!--script type="text/javascript">
-  function readImage (input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-          $('#blah').attr('src', e.target.result); // Renderizamos la imagen
-      }
-      reader.readAsDataURL(input.files[0]);
+        document.getElementById('hide').addEventListener('click', (e) => {
+          let cupcakes = Array.prototype.slice.call(document.getElementsByClassName("Subtitulo"), 0);
+          let cupcakes2 = Array.prototype.slice.call(document.getElementsByClassName("Contenido"), 0);
+          
+          for(element of cupcakes){
+            //console.log(element);
+            element.remove();
+          }
+
+          for(element2 of cupcakes2){
+            //console.log(element2);
+            element2.remove();
+          }
+
+        });
+
     }
   }
+    
+</script>
 
-  $("#imgInp").change(function () {
-    // Código a ejecutar cuando se detecta un cambio de archivO
-    readImage(this);
-  });
-</script-->
-
-{{-- <div id="divInputLoad">
-    <h1>Test it uploading your own image</h1>
-    <div id="divFileUpload">
-        <input id="file-upload" type="file" accept="image/*" />
-    </div>
-    <div id="file-preview-zone">
-    </div>
-</div>
-
-<script>
-    function readFile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
- 
-            reader.onload = function (e) {
-                var filePreview = document.createElement('img');
-                filePreview.id = 'file-preview';
-                //e.target.result contents the base64 data from the image uploaded
-                filePreview.src = e.target.result;
-                console.log(e.target.result);
- 
-                var previewZone = document.getElementById('file-preview-zone');
-                previewZone.appendChild(filePreview);
-            }
- 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
- 
-    var fileUpload = document.getElementById('file-upload');
-    fileUpload.onchange = function (e) {
-        readFile(e.srcElement);
-    }
- 
-</script> --}}
 @endsection

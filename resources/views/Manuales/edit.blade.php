@@ -1,6 +1,12 @@
 @extends('layouts.template') 
 @section('content')
-
+<style type="text/css">
+img{
+  width: 100PX;
+  height: 100px;
+  margin: 10px;
+}
+</style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -186,8 +192,7 @@
                                         <label>Imagen:</label>
                                         <input type="file" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
                                         <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
-                                        <img src="" width="150px" height="120px" id="imagenmuestra">
-                                    </div>
+{{-- , --}}                                    </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
@@ -244,15 +249,21 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <input type="hidden" name="idsubtitle" id="idsubtitle" value="{{$edit_manual->id}}"/>
+                                        <input type="hidden" name="idsubtitle" class="idsubtitle" id="idsubtitle" value="{{$edit_manual->id}}"/>
 
                                         <center>
+
                                           <label><h4>Vista Previa</h4></label><br>                   
-                                          <img id="view_Añadir_img1" src="https://via.placeholder.com/200" alt="Tu imagen" /><br><br> 
+                                          {{-- <img id="view_Añadir_img1" src="https://via.placeholder.com/200" alt="Tu imagen" /><br><br> --}} 
 
                                             <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Añadir_imagen(this.name,'btn_Añadir_imagen');">Cargar imagen</span>
-                                        <input name="imagen" id="Añadir_img1" type="file" accept="image/jpeg" style="display: none;" required>
+
+                                            <input name="imagenn" class="Añadir_img1" id="{{$edit_manual->id}}" type="file" accept="image/jpeg" style="display: none;" required>
+
+                                            <img name="imgSalida_Añadir" src="/images/150.png" />
+
                                         </center>
+
                                     </div>
 
                                     <div class="modal-footer">
@@ -274,11 +285,10 @@
 
                         <input type="hidden" name="id_manuals" value="{{$edit_manuals[0]->id}}">
 
-
-                        <input type="button" id="show" onclick="mostrarBoton();volver_btn();" value="Nuevo subtítulo" class="btn btn-sm btn-success pull-right float-right">
-                        <a class="btn btn-sm btn-success pull-right float-right mx-1" id="volver" href="{{'/manuals'}}">Volver</a>
+                        <br><br>
+                        <input type="button" id="show" onclick="mostrarBoton();volver_btn();" value="Nuevo subtítulo" class="btn text text-white btn-sm pull-right float-right" style="background-color:#0058A8;">
+                        <a class="btn btn-sm btn-success pull-right float-right mx-1" id="volver" href="{{'/manuals'}}">Volver</a><br>
                         <div id="element" style="display: none;">
-                            <br>
 
                             <div class="content">
 
@@ -303,44 +313,17 @@
                                             <strong>{{ $message }}</strong>
                                         </span> @enderror
 
-                                    <!-- Botón disparador modal -->
-                                    <button type="button" class="btn btn-sm  float-right text text-white" style="background-color:#0058A8;" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Añadir imagen/.jpeg
-                                    </button>
-                                    <br>
+                                    
+                                                     
+                                        <span class="btn btn-sm btn-success pull-right float-right mx-1" onclick="$(this).parent().find('input[type=file]').click();">Cargar imagen</span>
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Añadir imagen</h5>
-                                                </div>
-                                                <div class="modal-body">
+                                        <input name="imagen" id="Añadir_img2" type="file" accept="image/jpeg" style="display: none;">
+                                        <button type="button" id="delete_New_img" class="btn btn-sm btn-danger  pull-right float-right">Eliminar imagen</button>
 
-                                                    <center>
-                                                      <label><h4>Vista Previa</h4></label><br>                   
-                                                      <img id="view_Añadir_img2" src="https://via.placeholder.com/200" alt="Tu imagen" /><br><br> 
+                                        {{-- <input name="file-input" id="file-input" type="file" /> --}}
 
-                                                        <span class="btn btn-sm btn-success" onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Añadir_imagen_create(this.name,'btn_Añadir_imagen_create');">Cargar imagen</span>
-
-                                                        <input name="imagen" id="Añadir_img2" type="file" accept="image/jpeg" style="display: none;">
-
-                                                        lllll
-
-                                                        <input name="file-input" id="file-input" type="file" />
-                                                       <br />
-                                                       <img id="imgSalida" width="50%" height="50%" src="" />
-                                                    </center>
-
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                                    <input type="button" name="btn_Añadir_imagen_create" data-dismiss="modal" id="btn_Añadir_imagen_create" class="btn text text-white" style="background-color:#0058A8;" disabled value="Guardar cambios">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                       <img id="imgSalida" src="/images/150.png" />
+                                    
                                 </div>
                                 <br>
 
@@ -364,8 +347,9 @@
 
 <script src="{{ asset('/js/edit_manual.js') }}"></script>
 <script>
-     $(function() {
-  $('#file-input').change(function(e) {
+
+$(function() {
+  $('#Añadir_img2').change(function(e) {
       addImage(e); 
      });
 
@@ -386,5 +370,27 @@
       reader.readAsDataURL(file);
      }
     });
+
+    $("#delete_New_img").click(function(event) {
+        $("#Añadir_img2").val(''); //valor del input type"file" lo dejamos en null
+        $("#imgSalida").attr('src', "/images/150.png");
+
+    });
+
+    // $("#delete_img"+ i).click(function(event) {
+    //     $("#imagen"+ i).val(''); //valor del input type"file" lo dejamos en null
+    //     $("#imgSalida"+ i).attr('src', "/images/150.png");
+
+    // });
+
+      //     var delete_img           = document.createElement('button');
+      //     delete_img.innerHTML = "Eliminar imagen"; 
+      //     delete_img.type      = "button";
+      //     delete_img.id        = "delete_img" + i;
+      //     delete_img.className = "btn btn-sm pull-right float-right mx-1 text text-white";
+      //     delete_img.style     = "background-color: #717171";
+
+      // document.getElementById('content').appendChild(delete_img);
 </script>
+
 @endsection
