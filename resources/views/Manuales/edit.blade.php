@@ -177,7 +177,7 @@ img{
                         </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="Actualizar_imagen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal fade" id="Actualizar_imagen" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -185,17 +185,28 @@ img{
                                     </div>
 
                                     <div class="modal-body">
-                                        <input type="text" name="bookId" id="bookId" value="" />
-                                        <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Actualizar_imagen(this.name,'boton2');">Cargar imagen</span>
-                                        <input name="imagen" id="imagen" type="file" accept="image/jpeg" style="display: none;" required>
+                                        <input type="hidden" name="bookId" id="bookId" value="" />
 
-                                        <label>Imagen:</label>
-                                        <input type="file" class="form-control" name="imagen" id="imagen" maxlength="256" placeholder="Imagen">
-                                        <input type="hidden" class="form-control" name="imagenactual" id="imagenactual">
-{{-- , --}}                                    </div>
+                                        
+
+                                        <div class="row justify-content-center">
+                                             
+                                            <div>
+                                                <img name="imgSalida_actualizar_sub" id="imgSalida_actualizar_sub" src="/images/150.png">
+                                             <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Actualizar_imagen(this.name,'boton2');">Cargar imagen</span>
+                                               <input name="imagen" id="actualizar_img_sub" type="file" accept="image/jpeg" style="display: none;" required>
+
+                                                <button type="button" id="delete_actualizar_img_sub" class="btn btn-sm btn-danger">Eliminar imagen</button>
+                                            </div>
+
+                                        </div>
+
+                                        
+                                       {{--  <input type="hidden" class="form-control" name="imagenactual" id="imagenactual"> --}}
+                                    </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" id="cerrar_acrualizar_img_sub" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                         <input type="submit" name="boton2" id="boton2" class="btn text text-white" style="background-color:#0058A8;" disabled value="Guardar cambios">
                                     </div>
                                 </div>
@@ -241,7 +252,7 @@ img{
                         <br>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="Anadir_imagen" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal fade" id="Anadir_imagen" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -251,23 +262,25 @@ img{
                                     <div class="modal-body">
                                         <input type="hidden" name="idsubtitle" class="idsubtitle" id="idsubtitle" value="{{$edit_manual->id}}"/>
 
-                                        <center>
+                                         <center><label><h4>Vista Previa</h4></label></center>
 
-                                          <label><h4>Vista Previa</h4></label><br>                   
-                                          {{-- <img id="view_Añadir_img1" src="https://via.placeholder.com/200" alt="Tu imagen" /><br><br> --}} 
+                                         <div class="row justify-content-center">
+                                             
+                                            <div>
+                                                <img name="imgSalida_anadir_sub" id="imgSalida_anadir_sub" src="/images/150.png">
+                                             <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Añadir_imagen(this.name,'btn_Añadir_imagen');">Cargar imagen</span>
 
-                                            <span class="btn btn-sm btn-success " onclick="$(this).parent().find('input[type=file]').click();desactivar_btn_Añadir_imagen(this.name,'btn_Añadir_imagen');">Cargar imagen</span>
+                                                <input name="imagen" id="Anadir_img_sub" type="file" accept="image/jpeg" style="display: none;" required>
 
-                                            <input name="imagenn" class="Añadir_img1" id="{{$edit_manual->id}}" type="file" accept="image/jpeg" style="display: none;" required>
+                                                <button type="button" id="delete_Anadir_img_sub" class="btn btn-sm btn-danger">Eliminar imagen</button>
+                                            </div>
 
-                                            <img name="imgSalida_Añadir" src="/images/150.png" />
-
-                                        </center>
+                                         </div>                   
 
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                        <button type="button" id="cerrar_Anadir_img_sub" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                                         <input type="submit" name="btn_Añadir_imagen" id="btn_Añadir_imagen" class="btn text text-white" style="background-color:#0058A8;" disabled value="Guardar cambios">
                                     </div>
                                 </div>
@@ -348,6 +361,91 @@ img{
 <script src="{{ asset('/js/edit_manual.js') }}"></script>
 <script>
 
+////////////////////////////////////////////////////////////////////////////////////////////
+//vista previa actualizar la imagen de un suctutulo
+$(function() {
+  $('#actualizar_img_sub').change(function(e) {
+      addImage(e); 
+     });
+
+     function addImage(e){
+      var file = e.target.files[0],
+      imageType = /image.*/;
+    
+      if (!file.type.match(imageType))
+       return;
+  
+      var reader = new FileReader();
+  
+      reader.onload = function(e){
+         var result=e.target.result;
+        $('#imgSalida_actualizar_sub').attr("src",result);
+      }
+       
+      reader.readAsDataURL(file);
+     }
+    });
+
+//Eliminar vista previa y limpiar input type="file"
+$("#delete_actualizar_img_sub").click(function(event) {
+    $("#actualizar_img_sub").val(''); //valor del input type"file" lo dejamos en null
+    $("#imgSalida_actualizar_sub").attr('src', "/images/150.png");
+
+});
+
+//Eliminar vista previa y limpiar input type="file" al cerrar el modal
+$("#cerrar_acrualizar_img_sub").click(function(event) {
+    $("#actualizar_img_sub").val(''); //valor del input type"file" lo dejamos en null
+    $("#imgSalida_actualizar_sub").attr('src', "/images/150.png");
+
+})
+////////////////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+//vista previa añadir imagen a un suctutulo
+$(function() {
+  $('#Anadir_img_sub').change(function(e) {
+      addImage(e); 
+     });
+
+     function addImage(e){
+      var file = e.target.files[0],
+      imageType = /image.*/;
+    
+      if (!file.type.match(imageType))
+       return;
+  
+      var reader = new FileReader();
+  
+      reader.onload = function(e){
+         var result=e.target.result;
+        $('#imgSalida_anadir_sub').attr("src",result);
+      }
+       
+      reader.readAsDataURL(file);
+     }
+    });
+
+//Eliminar vista previa y limpiar input type="file"
+$("#delete_Anadir_img_sub").click(function(event) {
+    $("#Anadir_img_sub").val(''); //valor del input type"file" lo dejamos en null
+    $("#imgSalida_anadir_sub").attr('src', "/images/150.png");
+
+});
+
+//Eliminar vista previa y limpiar input type="file" al cerrar el modal
+$("#cerrar_Anadir_img_sub").click(function(event) {
+    $("#Anadir_img_sub").val(''); //valor del input type"file" lo dejamos en null
+    $("#imgSalida_anadir_sub").attr('src', "/images/150.png");
+
+});
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//vista previa añadir imagen a un nuevo suctutulo
+
 $(function() {
   $('#Añadir_img2').change(function(e) {
       addImage(e); 
@@ -371,26 +469,22 @@ $(function() {
      }
     });
 
-    $("#delete_New_img").click(function(event) {
-        $("#Añadir_img2").val(''); //valor del input type"file" lo dejamos en null
-        $("#imgSalida").attr('src', "/images/150.png");
+//Eliminar vista previa y limpiar input type="file"
+$("#delete_New_img").click(function(event) {
+    $("#Añadir_img2").val(''); //valor del input type"file" lo dejamos en null
+    $("#imgSalida").attr('src', "/images/150.png");
 
-    });
+});
 
-    // $("#delete_img"+ i).click(function(event) {
-    //     $("#imagen"+ i).val(''); //valor del input type"file" lo dejamos en null
-    //     $("#imgSalida"+ i).attr('src', "/images/150.png");
+//Eliminar vista previa y limpiar input type="file" al cerrar el modal
+$("#hide").click(function(event) {
+    $("#Añadir_img2").val(''); //valor del input type"file" lo dejamos en null
+    $("#imgSalida").attr('src', "/images/150.png");
 
-    // });
+});
 
-      //     var delete_img           = document.createElement('button');
-      //     delete_img.innerHTML = "Eliminar imagen"; 
-      //     delete_img.type      = "button";
-      //     delete_img.id        = "delete_img" + i;
-      //     delete_img.className = "btn btn-sm pull-right float-right mx-1 text text-white";
-      //     delete_img.style     = "background-color: #717171";
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-      // document.getElementById('content').appendChild(delete_img);
 </script>
 
 @endsection

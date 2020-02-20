@@ -1,10 +1,8 @@
 @extends('layouts.template')
 
 @section('content')
-
 <style type="text/css">
-
-  img{
+    img{
   width: 100PX;
   height: 100px;
   margin: 10px;
@@ -14,91 +12,105 @@
   overflow: hidden;
   width: 0;
 }
-
 </style>
-
 <div class="container">
-    <div class="row justify-content-center" >
-        <div class="col-md-12" >
+    <div class="row justify-content-center">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header text text-white" style="background-color:#0058A8;">
-
-                  <h5>Creación de Manual</h5>
-
+                    <h5>
+                        Creación de Manual
+                    </h5>
                 </div>
-
-                <div class="card-body" style="box-shadow: #999 15px 15px 10px;"> 
-
-                    <form name="form" method="POST" action="{{route('manuales.store')}}"  enctype = "multipart/form-data" >
-
-                      @csrf
-
-                      <div class="form-group">
-
-                            <label>Título</label>
-                            <input type="text" name="titulo" class="form-control @error('titulo') is-invalid @enderror" value="{{ old('titulo') }}" required maxlength="255">
-
-                             @error('titulo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            
-
-                        </div>
-
+                <div class="card-body" style="box-shadow: #999 15px 15px 10px;">
+                    <form action="{{route('manuales.store')}}" enctype="multipart/form-data" method="POST" name="form">
+                        @csrf
                         <div class="form-group">
-
-                            <label>Descripción</label>
-                            <textarea name="descripcion" class="form-control @error('descripcion') is-invalid @enderror" rows="10" style="resize:none;" required autocomplete="descripción" autofocus maxlength="600">{{old('descripcion')}}</textarea>
-
-                             @error('descripcion')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                            <label>
+                                Título
+                            </label>
+                            <input class="form-control @error('titulo') is-invalid @enderror" maxlength="255" name="titulo" required="" type="text" value="{{ old('titulo') }}">
+                                @error('titulo')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>
+                                        {{ $message }}
+                                    </strong>
+                                </span>
+                                @enderror
+                            </input>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Descripción
+                            </label>
+                            <textarea autocomplete="descripción" autofocus="" class="form-control @error('descripcion') is-invalid @enderror" maxlength="600" name="descripcion" required="" rows="10" style="resize:none;">
+                                {{old('descripcion')}}
+                            </textarea>
+                            @error('descripcion')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>
+                                    {{ $message }}
+                                </strong>
+                            </span>
                             @enderror
-
-                      </div><br>
-
-                      <div class="form-group">
-                        
-                        <center>
-                          <a class="btn btn-sm btn-success" id="volver" href="javascript: history.go(-1)">Volver</a>
-                          <input type="submit" id="guardar" class="btn btn-sm text text-white" value="Guardar Manual" style="background-color:#0058A8;">
-                        </center>
-                        
-                      </div>
-
-                      <div class="btn-group btn-sm pull-right float-right" role="group" aria-label="Basic example">
-                         {{-- <span>Agregar subtitulos:</span> --}}
-                          <input type="number" id="member" min="1" pattern="^[0-9]+">
-                          <input type="button" id="show" onclick="guardar_ocultar();volver_ocultar();Agregar_subtitulos();" value="Agregar subtitulos" class="btn btn-sm btn-success mx-1">
-                      </div><br><br>
-
-                       <div id="element" style="display: none;"><br>
-
-                               <div id="content"></div>
-
-                               <div id="close">
-                                  <center>
-                                    <a class="btn btn-sm btn-success" id="volver" href="{{'/manuals'}}">Volver</a> 
-                                    <input type="button" id="hide" onclick="volver_mostrar();mostrarBotons();guardar_mostrar();" value="Cancelar" class="btn btn-sm btn-danger  mx-1">
-                                    <input type="submit" id="guardar2" class="btn btn-sm text text-white " style="background-color:#0058A8;" value ="Guardar manual"> 
-                                  </center>
-                              </div><br>
-                       </div>  
-                  </div>
-                  <input type="hidden" name="author" value="{{Auth::user()->email}}">
-               </form> 
+                        </div>
+                        <br>
+                            <div class="form-group">
+                                <center>
+                                    <a class="btn btn-sm btn-success" href="javascript: history.go(-1)" id="volver">
+                                        Volver
+                                    </a>
+                                    <input class="btn btn-sm text text-white" id="guardar" style="background-color:#0058A8;" type="submit" value="Guardar Manual">
+                                    </input>
+                                </center>
+                            </div>
+                            <div aria-label="Basic example" class="btn-group btn-sm pull-right float-right" role="group">
+                                {{--
+                                <span>
+                                    Agregar subtitulos:
+                                </span>
+                                --}}
+                                <input id="member" min="1" pattern="^[0-9]+" type="number">
+                                    <input class="btn btn-sm btn-success mx-1" id="show" onclick="guardar_ocultar();volver_ocultar();Agregar_subtitulos();" type="button" value="Agregar subtitulos">
+                                    </input>
+                                </input>
+                            </div>
+                            <br>
+                                <br>
+                                    <div id="element" style="display: none;">
+                                        <br>
+                                            <div id="content">
+                                            </div>
+                                            <div id="close">
+                                                <center>
+                                                    <a class="btn btn-sm btn-success" href="{{'/manuals'}}" id="volver">
+                                                        Volver
+                                                    </a>
+                                                    <input class="btn btn-sm btn-danger mx-1" id="hide" onclick="volver_mostrar();mostrarBotons();guardar_mostrar();" type="button" value="Cancelar">
+                                                        <input class="btn btn-sm text text-white " id="guardar2" style="background-color:#0058A8;" type="submit" value="Guardar manual">
+                                                        </input>
+                                                    </input>
+                                                </center>
+                                            </div>
+                                            <br>
+                                            </br>
+                                        </br>
+                                    </div>
+                                </br>
+                            </br>
+                        </br>
+                    </form>
+                </div>
+                <input name="author" type="hidden" value="{{Auth::user()->email}}">
+                </input>
             </div>
         </div>
     </div>
 </div>
-
-<script src="{{ asset('/js/create_manual.js') }}"></script>
+<script src="{{ asset('/js/create_manual.js') }}">
+</script>
 <script type="text/javascript">
-
-  function Agregar_subtitulos(){
+    function Agregar_subtitulos(){
 
     var number = parseInt(document.getElementById('member').value);
     // console.log(number);
@@ -319,7 +331,5 @@
 
     }
   }
-    
 </script>
-
 @endsection

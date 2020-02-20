@@ -46,19 +46,19 @@
     </div>
 
 <footer>
-    <div>
-        <div class="container-fluid">
+{{--     <div> --}}
+        {{-- <div class="container-fluid"> --}}
             <div class="shadow-lg p-0 mb-0 bg-white rounded">
             <center>
 
-                <div class="p-1 mb-2 bg-danger text-white">
+                <div class="p-1 mb-0 bg-danger text-white">
                         Cantv 2020 - RIF:J-00124134-5 | GGSI | GSOS | Coinse - Todos los derechos reservados - 2020©
                 </div>
 
             </center>
             </div>
-        </div>
-    </div>
+        {{-- </div> --}}
+{{--     </div> --}}
 </footer>
 
 </body>
