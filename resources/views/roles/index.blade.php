@@ -24,16 +24,18 @@
                           <input  type="date"   name="date"  class="form-control">
                           <button type="submit" class="btn text text-white" style="background-color: #717171">Buscar</button>
 
-                          @can('roles.create')
-                          <a href="{{route('roles.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
-                          @endcan
+                          @if(Auth::user()->can('roles.create', App\Model::class))
+                              <a href="{{route('roles.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
+                          @else
+                              <a href="#" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
+                          @endif
 
                         </div>
 
                     </div>
 
                   </form><br>
-<div class="table-responsive">
+                <div class="table-responsive">
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
@@ -55,21 +57,29 @@
 
 
                                 <td width="10px" >
-                                    @can('roles.show')
-                                     <a href="{{ route('roles.show', $role->id) }}" style="background-color:#0058A8"; class="btn btn-sm text text-white">Ver</a>
-                                    @endcan
+
+                                    @if(Auth::user()->can('roles.show', App\Model::class))
+                                        <a href="{{ route('roles.show', $role->id) }}" style="background-color:#0058A8"; class="btn btn-sm text text-white">Ver</a>
+                                    @else
+                                        <a href="#" style="background-color:#0058A8"; class="btn btn-sm text text-white">Ver</a>
+                                    @endif
+
                                 </td>
 
                                  <td width="10px" >
-                                    @can('roles.edit')
-                                    <a href="{{ route('roles.edit', $role->id) }}" style="background-color:#28a83b"; class="btn btn-sm text text-white">Editar</a>
-                                    @endcan
+
+                                    @if(Auth::user()->can('roles.edit', App\Model::class))
+                                        <a href="{{ route('roles.edit', $role->id) }}" style="background-color:#28a83b"; class="btn btn-sm text text-white">Editar</a>
+                                    @else
+                                        <a href="#" style="background-color:#28a83b"; class="btn btn-sm text text-white">Editar</a>
+                                    @endif
+
                                 </td>
 
                                 <td width="10px" >
-                                    @can('roles.destroy')
 
-                                       <form action="{{ route('roles.destroy',$role->id) }}" method="POST">
+                                    @if(Auth::user()->can('roles.destroy', App\Model::class))
+                                        <form action="{{ route('roles.destroy',$role->id) }}" method="POST">
    
                                             @csrf
 
@@ -78,7 +88,10 @@
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar el rol?')">Eliminar</button>
 
                                        </form>
-                                    @endcan 
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-danger">Eliminar</a>
+                                    @endif
+
                                 </td>
 
                             </tr>

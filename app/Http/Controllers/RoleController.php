@@ -97,44 +97,30 @@ class RoleController extends Controller
 
         if ($validator->fails()) {
 
-            alert()->html(
-
-                '<h2>Error</h2>',
-                "$nombre"."<br>".
-                "$slug"."<br>".
-                "$descripcion",
-                'error');
-
+            alert()->html('<h2>Error</h2>',"$nombre"."<br>"."$slug"."<br>"."$descripcion",'error');
             return back(); 
         }
 
         if($request->all_access && $request->no_access &&  $request->permissions){
 
             toast('Error al seleccionar dos banderas especiales y a su vez permisos.','error');
-
             return back();
-
         }
         elseif($request->all_access && $request->no_access){
 
             toast('Error al seleccionar dos banderas especiales.','error');
-
             return back();
-
         }
         elseif($request->all_access && $request->permissions){
 
             toast('Error al seleccionar una banderas especiales y a su vez permisos.','error');
-
             return back();
 
         }
         elseif($request->no_access && $request->permissions){
 
             toast('Error al seleccionar una banderas especiales y a su vez permisos.','error');
-
             return back();
-
         }
         else{
 
@@ -142,16 +128,14 @@ class RoleController extends Controller
 
                 $true = $request->all_access;
                 $role->special = $true;
-
-            }elseif(isset($request->no_access)){
+            }
+            elseif(isset($request->no_access)){
 
                 $true = $request->no_access;
                 $role->special = $true;
-
             }else{
 
                 $role->special = null;
-
             }
         }
         $role->save();
@@ -170,14 +154,17 @@ class RoleController extends Controller
             if (isset($permission[$i]) ? $permission[$i] : '') {
 
                if ($permission[$i] >= 2  && $permission[$i] <= 5) {
+
                    $users_permissions_index = 'v';
                }
 
                if ($permission[$i] >= 7  && $permission[$i] <= 10) {
+
                   $roles_permissions_index   = 'v';
                }
 
                if ($permission[$i] >= 12 && $permission[$i] <= 15) {
+
                   $manuals_permissions_index = 'v';
                }
 
@@ -185,18 +172,21 @@ class RoleController extends Controller
         }
 
         if ($users_permissions_index == 'v') {
+
             $users_index  = Role::findOrFail($role_id);
             $users_index->permissions()->attach($request->permissions = 1);
             //echo 'users.index verdadero'.'<br>';
         }
 
         if ($roles_permissions_index == 'v') {
+
             $roles_index  = Role::findOrFail($role_id);
             $roles_index->permissions()->attach($request->permissions = 6);
             //echo 'roles.index verdadero'.'<br>';
         }
 
         if ($manuals_permissions_index == 'v') {
+
             $manuals_index = Role::findOrFail($role_id);
             $manuals_index->permissions()->attach($request->permissions = 11);
             //echo 'manuals.index verdadero'.'<br>';
@@ -268,44 +258,29 @@ class RoleController extends Controller
 
         if ($validator->fails()) {
 
-            alert()->html(
-
-                '<h2>Error</h2>',
-                "$nombre"."<br>".
-                "$slug"."<br>".
-                "$descripcion",
-                'error');
-
+            alert()->html('<h2>Error</h2>',"$nombre"."<br>"."$slug"."<br>"."$descripcion",'error');
             return back(); 
         }
 
         if($request->all_access && $request->no_access &&  $request->permissions){
 
             toast('Error al seleccionar dos banderas especiales y a su vez permisos.','error');
-
             return back();
-
         }
         elseif($request->all_access && $request->no_access){
 
             toast('Error al seleccionar dos banderas especiales.','error');
-
             return back();
-
         }
         elseif($request->all_access && $request->permissions){
 
             toast('Error al seleccionar una banderas especiales y a su vez permisos.','error');
-
             return back();
-
         }
         elseif($request->no_access && $request->permissions){
 
             toast('Error al seleccionar una banderas especiales y a su vez permisos.','error');
-
             return back();
-
         }
         else{
 
@@ -313,16 +288,15 @@ class RoleController extends Controller
 
                 $true = $request->all_access;
                 $role->special = $true;
-
-            }elseif(isset($request->no_access)){
+            }
+            elseif(isset($request->no_access)){
 
                 $true = $request->no_access;
                 $role->special = $true;
-
-            }else{
+            }
+            else{
 
                 $role->special = null;
-
             }
         }
 
@@ -342,14 +316,17 @@ class RoleController extends Controller
             if (isset($permission[$i]) ? $permission[$i] : '') {
 
                if ($permission[$i] >= 2  && $permission[$i] <= 5) {
+
                    $users_permissions_index = 'v';
                }
 
                if ($permission[$i] >= 7  && $permission[$i] <= 10) {
+
                   $roles_permissions_index   = 'v';
                }
 
                if ($permission[$i] >= 12 && $permission[$i] <= 15) {
+
                   $manuals_permissions_index = 'v';
                }
 
@@ -357,31 +334,37 @@ class RoleController extends Controller
         }
 
         if ($users_permissions_index == 'v') {
+
             $users_index  = Role::findOrFail($role_id);
             $users_index->permissions()->attach($request->permissions = 1);
             //echo 'users.index verdadero'.'<br>';
         }
         else{
+
             $users_index  = Role::findOrFail($role_id);
             $users_index->permissions()->detach($request->permissions = 1);
         }
 
         if ($roles_permissions_index == 'v') {
+
             $roles_index  = Role::findOrFail($role_id);
             $roles_index->permissions()->attach($request->permissions = 6);
             //echo 'roles.index verdadero'.'<br>';
         }
         else{
+
             $roles_index  = Role::findOrFail($role_id);
             $roles_index->permissions()->detach($request->permissions = 6);
         }
 
         if ($manuals_permissions_index == 'v') {
+
             $manuals_index = Role::findOrFail($role_id);
             $manuals_index->permissions()->attach($request->permissions = 11);
             //echo 'manuals.index verdadero'.'<br>';
         }
         else{
+
             $manuals_index = Role::findOrFail($role_id);
             $manuals_index->permissions()->detach($request->permissions = 11);
         }

@@ -26,16 +26,19 @@
                           <input  type="email"  name="email" class="form-control" placeholder="Correo electrónico">        
 
                           <button type="submit" class="btn text text-white" style="background-color: #717171">Buscar</button>
-                          @can('users.create')
-                          <a href="{{route('users.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
-                          @endcan
+
+                          @if(Auth::user()->can('users.create', App\Model::class))
+                              <a href="{{route('users.create')}}" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
+                          @else
+                              <a href="#" class="btn text text-white float-right mx-1" style="background-color:#0058A8;">Crear</a>
+                          @endif
 
                         </div>
 
                     </div>
 
                   </form><br>
-<div class="table-responsive">
+                <div class="table-responsive">
                     <table class="table table-striped table-hover">
                       <thead>
                         <tr>
@@ -59,20 +62,28 @@
                                 
 
                                 <td width="10px" >
-                                    @can('users.show')
-                                    <a href="{{ route('users.show', $usuario->id) }}" style="background-color:#0058A8"; class="btn btn-sm text text-white" >Ver</a>
-                                    @endcan
+
+                                    @if(Auth::user()->can('users.show', App\Model::class))
+                                        <a href="{{ route('users.show', $usuario->id) }}" style="background-color:#0058A8"; class="btn btn-sm text text-white" >Ver</a>
+                                    @else
+                                        <a href="#" style="background-color:#0058A8"; class="btn btn-sm text text-white" >Ver</a>
+                                    @endif
+
                                 </td>
 
                                  <td width="10px" >
-                                    @can('users.edit')
-                                    <a href="{{ route('users.edit', $usuario->id) }}" style="background-color:#28a83b"; class="btn btn-sm text text-white" >Editar</a>
-                                    @endcan
+
+                                    @if(Auth::user()->can('users.edit', App\Model::class))
+                                        <a href="{{ route('users.edit', $usuario->id) }}" style="background-color:#28a83b"; class="btn btn-sm text text-white" >Editar</a>
+                                    @else
+                                        <a href="#" style="background-color:#28a83b"; class="btn btn-sm text text-white" >Editar</a>
+                                    @endif
+
                                 </td>
 
                                 <td width="10px" >
-                                    @can('users.destroy')
 
+                                    @if(Auth::user()->can('users.destroy', App\Model::class))
                                     <form action="{{ route('users.destroy', $usuario->id) }}" method="POST">
    
                                         @csrf
@@ -82,7 +93,10 @@
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar {{$usuario->name}}?')">Eliminar</button>
                                         
                                     </form>
-                                    @endcan 
+                                    @else
+                                        <a href="#" class="btn btn-sm btn-danger" >Eliminar</a>
+                                    @endif
+
                                 </td>
 
                             </tr>

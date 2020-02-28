@@ -63,30 +63,48 @@
                                             {{ $manual->author }}
                                         </td>
                                         <td width="10px">
-                                            @can('manuales.show')
-                                            <a class="btn btn-sm text text-white" href="{{ route('manuales.show', $manual->id)}}" style="background-color:#0058A8;">
+
+                                            @if(Auth::user()->can('manuales.show', App\Model::class))
+                                                <a class="btn btn-sm text text-white" href="{{ route('manuales.show', $manual->id)}}" style="background-color:#0058A8;">
                                                 Ver
                                             </a>
-                                            @endcan
+                                            @else
+                                                <a class="btn btn-sm text text-white" href="#" style="background-color:#0058A8;">
+                                                Ver
+                                            </a>
+                                            @endif
+
                                         </td>
                                         <td width="10px">
-                                            @can('manuales.edit')
-                                            <a class="btn btn-sm text text-white" href="{{ route('manuales.edit', $manual->id) }}" style="background-color:#28a83b;">
+
+                                            @if(Auth::user()->can('manuales.edit', App\Model::class))
+                                                <a class="btn btn-sm text text-white" href="{{ route('manuales.edit', $manual->id) }}" style="background-color:#28a83b;">
                                                 Editar
                                             </a>
-                                            @endcan
+                                            @else
+                                                <a class="btn btn-sm text text-white" href="#" style="background-color:#28a83b;">
+                                                Editar
+                                            </a>
+                                            @endif
+
                                         </td>
                                         <td width="10px">
-                                            @can('manuales.destroy')
-                                            <form action="{{route('manuales.destroy',$manual->id)}}" method="POST">
+
+                                            @if(Auth::user()->can('manuales.destroy', App\Model::class))
+                                                <form action="{{route('manuales.destroy',$manual->id)}}" method="POST">
                                                 @csrf
 
                                               @method('DELETE')
-                                                <button class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar {{$manual->name}}?')" type="submit">
+                                                <button class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar ({{$manual->name}})?')" type="submit">
                                                     Eliminar
                                                 </button>
                                             </form>
-                                            @endcan
+                                            @else
+                                                <a class="btn btn-sm btn-danger" href="#" >
+                                                Eliminar
+                                            </a>
+                                            @endif
+
                                         </td>
                                     </tr>
                                     @endforeach
