@@ -79,19 +79,22 @@
                             <h3>Lista de permisos</h3>
                              <div class="form-group">
                                 <ul class="list-unstyled">
-                                    
-                                    @foreach($permissions as $permission)
-                                    <li>
+
+                                @for ($i = 0; $i < count($permissions); $i++)
+
+                                    <li class="li" id="{{$permissions[$i]->id}}">
+
                                         <label>
-                                        <input type="checkbox" name="permissions[]" value="{{$permission->id}}" @if($role->permissions->contains($permission->id)) checked="checked" @endif>
 
-                                        {{ $permission->name }}
-                                        <em>({{ $permission->description }}).</em>
+                                        <input type="checkbox" class="checkbox_permissions" id="permissions" name="permissions[]" value="{{$permissions[$i]->id}}" @if($role->permissions->contains($permissions[$i]->id)) checked="checked" @endif>
+
+                                        <em>{{ $permissions[$i]->name }}({{ $permissions[$i]->description }}).</em>
+                                         
                                         </label>
-                                    </li>
-                                    @endforeach
+                                        
+                                    </li> 
+                                @endfor
 
-                                </ul>
                             </div>
                             <div class="form-group">
                               <div class="col-md-6 offset-md-5">
@@ -105,5 +108,25 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+
+var input = document.getElementsByClassName('li');
+
+for(let i = 0; i < input.length; i++){
+
+    if(input[i].id == 1){
+       input[i].remove();
+    }
+    if(input[i].id == 6){
+       input[i].remove();
+    }
+    if(input[i].id == 11){
+       input[i].remove();
+    }
+
+}
+
+</script>
 
 @endsection

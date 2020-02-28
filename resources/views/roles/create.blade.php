@@ -52,7 +52,7 @@
 
                             <div class="alert alert-primary" role="alert">
 
-                              <center><b>Seleccione solo un permiso espeial.</b></center>
+                              <center><b>Seleccione solo un permiso especial.</b></center>
                               
                             </div>
 
@@ -70,15 +70,9 @@
                              <div class="form-group">
                                 <ul class="list-unstyled">
                                     
-                                    @foreach($permissions as $permission)
                                     <li>
-                                        <label>
-                                        <input type="checkbox" name="permissions[]" value="{{$permission->id}}">
-                                        {{ $permission->name }}
-                                        <em>({{ $permission->description }}).</em>
-                                        </label>
-                                    </li>
-                                    @endforeach
+                                        <div id="content">
+                                    </li>    
 
                                 </ul>
                             </div>
@@ -100,28 +94,55 @@
 </div>
 
 <script type="text/javascript">
-// function validar(){
 
-// var all_access = document.getElementById('all_access');
+var array_permissions = <?php echo json_encode($permissions);?>;
+var n = array_permissions.length; //obtienes la longitud
+var container = document.getElementById('content');
 
-// var no_access  = document.getElementById('no_access');
+for(let i = 0; i <n; i++){
 
-//     if(!all_access.checked && !no_access.checked) {
+    var label       = document.createElement('label');/* label*/
+        label.id    = 'label'+i;
 
-//          alert('all_access y no_access vacio');
-//          return false
-//     }else{
+    var input       = document.createElement('input')/* input name checkbox*/
+        input.type  = 'checkbox';
+        input.name  = 'permissions[]';
+        input.id    = 'permissions'+i;
+        input.value =  array_permissions[i].id;
 
-//         alert('fallo');
-//         return false
-//     }
+    var name_permission           = document.createElement('em');/* p name */
+        name_permission.innerHTML = array_permissions[i].name;
+        name_permission.id        = 'name'+i;
 
-// } 
+    var em           = document.createElement('em');/* em description */
+        em.innerHTML = '('+array_permissions[i].description+').';
 
-// elemento = document.getElementById("campo");
-//     if( !elemento.checked ) {
-//       return false;
-//     }
+        label.appendChild(input);
+        label.appendChild(name_permission);
+        label.appendChild(em);
+
+    document.getElementById('content').appendChild(label);
+
+    var br    = document.createElement('br');/* br */
+        br.id = 'br'+i;
+        
+    document.getElementById('content').appendChild(br);
+
+    if (array_permissions[i].name == 'Navegar usuarios' && array_permissions[i].id == 1){
+        $("#label"+ i).remove();
+        $("#br"+ i).remove();
+    }
+    if (array_permissions[i].name == 'Navegar roles' && array_permissions[i].id == 6){
+        $("#label"+ i).remove();
+        $("#br"+ i).remove();
+    }
+    if (array_permissions[i].name == 'Navegar manuales' && array_permissions[i].id == 11){
+        $("#label"+ i).remove();
+        $("#br"+ i).remove();
+    } 
+    
+}
+
 </script>
 
 @endsection

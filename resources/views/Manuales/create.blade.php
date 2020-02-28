@@ -99,9 +99,9 @@
                                 </br>
                             </br>
                         </br>
+                        <input name="author" type="hidden" value="{{Auth::user()->email}}">
                     </form>
                 </div>
-                <input name="author" type="hidden" value="{{Auth::user()->email}}">
                 </input>
             </div>
         </div>

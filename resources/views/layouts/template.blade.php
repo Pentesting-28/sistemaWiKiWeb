@@ -49,23 +49,19 @@
 
                 
                     
-                @can('manuales.show', 'manuales.create', 'manuales.edit', 'manuales.destroy')
-
+                @can('manuales.index')
                   <a class="nav-link text-white" href="{{ route('manuales.index') }}">Manuales</a>
 
-                @endcan 
+                @endcan
 
                    
-                @can('users.show', 'users.create', 'users.edit', 'users.destroy')
-
-                <a class="nav-link text-white" href="{{ route('users.index') }}">Usuarios </a>
-                    
+                @can('users.index')
+                <a class="nav-link text-white" href="{{ route('users.index') }}">Usuarios </a>  
                 @endcan
-                    
-                @can('roles.show', 'roles.create', 'roles.edit', 'roles.destroy')
 
-               <a class="nav-link text-white" href="{{ route('roles.index') }}">Roles</a>
                     
+                @can('roles.index')
+               <a class="nav-link text-white" href="{{ route('roles.index') }}">Roles</a> 
                 @endcan
 
 

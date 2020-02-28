@@ -37,7 +37,7 @@ class UserController extends Controller
                                               ->where('created_at','LIKE',"%$date%" )
                                               ->paginate(10);
 
-        if ($name !== null or $date !== null or $date !== null) {
+        if ($name !== null or $date !== null or $email !== null) {
             
             if(count($usuarios) > 0){
 

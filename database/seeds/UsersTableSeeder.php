@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
             'description'    => 'Acceso total a usuarios'
         ]);
 
-        $role_Users->givePermissionTo('users.show', 'users.create', 'users.edit','users.destroy');
+        $role_Users->givePermissionTo('users.index', 'users.show', 'users.create', 'users.edit','users.destroy');
 
         //Role roles
         $role_Roles         =  Role::create([
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
             'description'    => 'Acceso total a roles'
         ]);
 
-        $role_Roles->givePermissionTo('roles.show', 'roles.create', 'roles.edit','roles.destroy');
+        $role_Roles->givePermissionTo('roles.index', 'roles.show', 'roles.create', 'roles.edit','roles.destroy');
 
         //Role manuals
         $role_Manual         =  Role::create([
@@ -61,7 +61,7 @@ class UsersTableSeeder extends Seeder
             'description'    => 'Acceso total a manuales'
         ]);
 
-        $role_Manual->givePermissionTo('manuales.show', 'manuales.create', 'manuales.edit','manuales.destroy');
+        $role_Manual->givePermissionTo('manuales.index', 'manuales.show', 'manuales.create', 'manuales.edit','manuales.destroy');
 
         //Asing role the Admin to user 
         $user = User::find($users->id); //Admin
