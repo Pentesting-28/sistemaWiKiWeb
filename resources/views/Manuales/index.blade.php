@@ -26,6 +26,17 @@
                                                 Crear
                                             </a>
                                             @endcan
+
+                                            @if(Auth::user()->can('manuales.create', App\Model::class))
+                                              <a class="btn text text-white float-right mx-1" href="{{route('manuales.create')}}" style="background-color:#0058A8;">
+                                                Crear
+                                            </a>
+                                            @else
+
+                                              <a class="btn text text-white float-right mx-1" href="#" style="background-color:#0058A8;">
+                                                Crear
+                                            </a>
+                                            @endif
                                         </input>
                                     </input>
                                 </input>
