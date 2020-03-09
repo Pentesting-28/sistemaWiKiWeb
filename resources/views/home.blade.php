@@ -86,7 +86,7 @@
 
         <!--Image-->
         <div class="view overlay z-depth-1-half">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" class="img-fluid"
+          <img src="images/manual_img1.jpg"  class="img-fluid"
             alt="">
           <a href="">
             <div class="mask rgba-white-light"></div>
@@ -101,7 +101,7 @@
 
         <!--Image-->
         <div class="view overlay z-depth-1-half">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(78).jpg" class="img-fluid"
+          <img src="images/manual_img2.jpg" class="img-fluid"
             alt="">
           <a href="">
             <div class="mask rgba-white-light"></div>
@@ -116,7 +116,7 @@
 
         <!--Image-->
         <div class="view overlay z-depth-1-half">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(79).jpg" class="img-fluid"
+          <img src="images/manual_img3.jpg" class="img-fluid"
             alt="">
           <a href="">
             <div class="mask rgba-white-light"></div>
@@ -131,7 +131,7 @@
 
         <!--Image-->
         <div class="view overlay z-depth-1-half">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(81).jpg" class="img-fluid"
+          <img src="images/manual_img4.jpg" class="img-fluid"
             alt="">
           <a href="">
             <div class="mask rgba-white-light"></div>
@@ -146,7 +146,7 @@
 
         <!--Image-->
         <div class="view overlay z-depth-1-half">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(82).jpg" class="img-fluid"
+          <img src="images/usuarios_img1.jpg" class="img-fluid"
             alt="">
           <a href="">
             <div class="mask rgba-white-light"></div>
@@ -161,7 +161,7 @@
 
         <!--Image-->
         <div class="view overlay z-depth-1-half">
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(84).jpg" class="img-fluid"
+          <img src="images/roles_img1.jpg" class="img-fluid"
             alt="">
           <a href="">
             <div class="mask rgba-white-light"></div>
@@ -179,7 +179,7 @@
 
   <!-- Copyright -->
   <div style="background-color: #757f95;" class="footer-copyright text text-white text-center py-3">
-    Cantv 2020 - RIF:J-00124134-5 | GGSI | GSOS | Coinse - Todos los derechos reservados - 2020©
+    Cantv 2020 - RIF:J-00124134-5 | GGSI | GSOS | Coinse - Todos los derechos reservados - 2020 ©
   </div>
   <!-- Copyright -->
 

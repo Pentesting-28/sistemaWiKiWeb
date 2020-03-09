@@ -37,15 +37,16 @@
 
                           <h3>Lista de permisos</h3>
                              <div class="form-group">
-                                <ul class="list-unstyled">
+                                <ul> {{-- class="list-unstyled" --}}
                                     
-                                    @foreach($detalle->permissions as $permissions)
-                                    <li>
-                                        <label>
-                                        {{ $permissions->name }}
-                                        <em>({{ $permissions->description }}).</em>
-                                        </label>
-                                    </li>
+                                    @foreach($detalle->permissions as $permissions) 
+
+                                       <li>
+
+                                        <em>{{ $permissions->name }}({{ $permissions->description }}).</em>
+                                       
+                                       </li>
+
                                     @endforeach
 
                                   </ul>

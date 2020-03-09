@@ -57,7 +57,9 @@
                                             {{ $manual->name }}
                                         </td>
                                         <td>
-                                            {{ $manual->created_at }}
+                                              
+                                            {{date('d-m-Y', strtotime($manual->created_at))}}
+
                                         </td>
                                         <td>
                                             {{ $manual->author }}

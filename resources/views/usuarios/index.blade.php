@@ -56,7 +56,7 @@
                             <tr>
 
                                 <td>{{ $usuario->name }}</td>
-                                <td>{{ $usuario->created_at}}</td>
+                                <td>{{date('d-m-Y', strtotime($usuario->created_at))}}</td>
                                 <td>{{ $usuario->email}}</td>
 
                                 

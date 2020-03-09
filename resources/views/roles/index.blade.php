@@ -53,7 +53,7 @@
 
                                 <td>{{ $role->name }}</td>
                            
-                                <td>{{ $role->created_at }}</td>
+                                <td>{{ date('d-m-Y', strtotime($role->created_at)) }}</td>
 
 
                                 <td width="10px" >

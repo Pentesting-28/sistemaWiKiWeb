@@ -147,28 +147,32 @@ class RoleController extends Controller
         $roles_permissions_index   = 'f';
         $manuals_permissions_index = 'f';
 
-        for($i = 0 ; $i < count($request->permissions); $i++){
-      
-            $permission=$request->permissions;
+        if($request->permissions !== null){
 
-            if (isset($permission[$i]) ? $permission[$i] : '') {
+          for($i = 0 ; $i < count($request->permissions); $i++){
+        
+              $permission=$request->permissions;
 
-               if ($permission[$i] >= 2  && $permission[$i] <= 5) {
+              if (isset($permission[$i]) ? $permission[$i] : '') {
 
-                   $users_permissions_index = 'v';
-               }
+                 if ($permission[$i] >= 2  && $permission[$i] <= 5) {
 
-               if ($permission[$i] >= 7  && $permission[$i] <= 10) {
+                     $users_permissions_index = 'v';
+                 }
 
-                  $roles_permissions_index   = 'v';
-               }
+                 if ($permission[$i] >= 7  && $permission[$i] <= 10) {
 
-               if ($permission[$i] >= 12 && $permission[$i] <= 15) {
+                    $roles_permissions_index   = 'v';
+                 }
 
-                  $manuals_permissions_index = 'v';
-               }
+                 if ($permission[$i] >= 12 && $permission[$i] <= 15) {
 
-            }
+                    $manuals_permissions_index = 'v';
+                 }
+
+              }
+          }
+
         }
 
         if ($users_permissions_index == 'v') {
@@ -309,28 +313,31 @@ class RoleController extends Controller
         $roles_permissions_index   = 'f';
         $manuals_permissions_index = 'f';
 
-        for($i = 0 ; $i < count($request->permissions); $i++){
-      
-            $permission=$request->permissions;
+        if($request->permissions !== null){
 
-            if (isset($permission[$i]) ? $permission[$i] : '') {
+          for($i = 0 ; $i < count($request->permissions); $i++){
+        
+              $permission=$request->permissions;
 
-               if ($permission[$i] >= 2  && $permission[$i] <= 5) {
+              if (isset($permission[$i]) ? $permission[$i] : '') {
 
-                   $users_permissions_index = 'v';
-               }
+                 if ($permission[$i] >= 2  && $permission[$i] <= 5) {
 
-               if ($permission[$i] >= 7  && $permission[$i] <= 10) {
+                     $users_permissions_index = 'v';
+                 }
 
-                  $roles_permissions_index   = 'v';
-               }
+                 if ($permission[$i] >= 7  && $permission[$i] <= 10) {
 
-               if ($permission[$i] >= 12 && $permission[$i] <= 15) {
+                    $roles_permissions_index   = 'v';
+                 }
 
-                  $manuals_permissions_index = 'v';
-               }
+                 if ($permission[$i] >= 12 && $permission[$i] <= 15) {
 
-            }
+                    $manuals_permissions_index = 'v';
+                 }
+
+              }
+          }
         }
 
         if ($users_permissions_index == 'v') {
