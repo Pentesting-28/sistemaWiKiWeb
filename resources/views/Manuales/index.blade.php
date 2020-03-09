@@ -21,11 +21,6 @@
                                             <button class="btn text text-white" style="background-color: #717171" type="submit">
                                                 Buscar
                                             </button>
-                                            @can('manuales.create')
-                                            <a class="btn text text-white float-right mx-1" href="{{route('manuales.create')}}" style="background-color:#0058A8;">
-                                                Crear
-                                            </a>
-                                            @endcan
 
                                             @if(Auth::user()->can('manuales.create', App\Model::class))
                                               <a class="btn text text-white float-right mx-1" href="{{route('manuales.create')}}" style="background-color:#0058A8;">
