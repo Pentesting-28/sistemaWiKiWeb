@@ -135,7 +135,8 @@ class ManualController extends Controller
 
                 return back(); 
             }
-
+            
+            //La funcion o propiedad de php count() define el tamaño de un array
             for($i = 0 ; $i < count($request->Contenido); $i++){
       
                     $subtitle=$request->Contenido;
